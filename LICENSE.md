@@ -1,6 +1,15 @@
-                                 Apache License
+This Open Project operates under the license terms described below.
+     
+OASIS invites anyone who knows of any IPR claims to disclose them if they may be essential to the implementation of any of the work of this project so that notice of them may be posted.
+
+OASIS requests that any party contact the [OASIS Open Project Administrator](mailto:op-admin@oasis-open.org) if it is aware of a claim of ownership of any patent claims that would necessarily be infringed by implementations of an OASIS Project Specification; and that any such claimant provide an indication of its willingness to grant a Specification Non-Assertion Covenant with respect to such patent claims, or otherwise to negotiate patent licenses free of charge with other parties on a non-discriminatory basis on reasonable terms and conditions.
+
+OASIS may include such claims on its website, but disclaims any obligation to do so. OASIS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in an OASIS Project Specification, or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights.
+     
+     
+     Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+                        https://www.apache.org/licenses/LICENSE-2.0
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -199,3 +208,6 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+
+In addition to the above license, each Contributor also agrees in the CLA to provide the additional Specification Non-Assertion Covenants to support finally-approved for any Project Specifications, as explained in [Section 15.3](https://www.oasis-open.org/policies-guidelines/open-projects-process/#repository-specification-licenses-special-covenant)of the OASIS Open Project Rules.
