@@ -1,0 +1,992 @@
+{
+  "type": "bundle",
+  "id": "bundle--9edb6354-d73f-4ba2-b774-3d76c6474b14",
+  "objects": [
+    {
+      "type": "behavior",
+      "spec_version": "2.1",
+      "id": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-07-14T09:16:08.989000Z",
+      "modified": "2021-07-14T09:16:08.989000Z",
+      "name": "Spearphishing Download of Office Macro",
+      "tactic": "INITIAL ACCESS",
+      "technique": "T1566.002 Spearphishing Link",
+      "first_seen": "2021-04-21T17:20:45",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "type": "behavior",
+      "spec_version": "2.1",
+      "id": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890aa",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-07-14T09:16:08.989000Z",
+      "modified": "2021-07-14T09:16:08.989000Z",
+      "name": "Office Macro executing commands",
+      "tactic": "EXECUTION",
+      "technique": "T1059.001 Command/Script execution - VBA",
+      "first_seen": "2021-04-21T17:20:45",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "type": "behavior",
+      "spec_version": "2.1",
+      "id": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890bb",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-07-14T09:16:08.989000Z",
+      "modified": "2021-07-14T09:16:08.989000Z",
+      "name": "Cobalt Strike Payload Beaconing",
+      "tactic": "Command and Control",
+      "technique": "T1071.001 - Application Layer Protocol - Web Protocols",
+      "first_seen": "2021-04-21T17:20:45",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "type": "behavior",
+      "spec_version": "2.1",
+      "id": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890cc",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-07-14T09:16:08.989000Z",
+      "modified": "2021-07-14T09:16:08.989000Z",
+      "name": "Registry modification for Persistence",
+      "tactic": "Persistence",
+      "technique": "T1547.001 - Autostart Execution - Registry Run Keys / Startup Folder",
+      "first_seen": "2021-04-21T17:20:45",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "type": "behavior",
+      "spec_version": "2.1",
+      "id": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-07-14T09:16:08.989000Z",
+      "modified": "2021-07-14T09:16:08.989000Z",
+      "name": "Secondary Payload Privilege Escalation Behavior",
+      "tactic": "Privilege Escalation",
+      "technique": "T1134.001 - Access token manipulation - Token impersonation",
+      "first_seen": "2021-04-21T17:20:45",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "type": "behavior",
+      "spec_version": "2.1",
+      "id": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ee",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-07-14T09:16:08.989000Z",
+      "modified": "2021-07-14T09:16:08.989000Z",
+      "name": "Credential Access Behavior with DCSync and Kerberoasting",
+      "tactic": "Credential Access",
+      "technique": "T1003.006 - OS Credential dumping - DCSync",
+      "first_seen": "2021-04-21T17:20:45",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "type": "behavior",
+      "spec_version": "2.1",
+      "id": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ff",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-07-14T09:16:08.989000Z",
+      "modified": "2021-07-14T09:16:08.989000Z",
+      "name": "Abnormal internal network traffic for Lateral Movement",
+      "tactic": "Lateral Movement",
+      "technique": "T1550.003 - Pass the Ticket",
+      "first_seen": "2021-04-21T17:20:45",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "type": "behavior",
+      "spec_version": "2.1",
+      "id": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890gg",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-07-14T09:16:08.989000Z",
+      "modified": "2021-07-14T09:16:08.989000Z",
+      "name": "Exfiltration Behavior via beacon",
+      "tactic": "Exfiltration",
+      "technique": "T1041 - Exfiltration over C2 Channel",
+      "first_seen": "2021-04-21T17:20:45",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-10-01T20:03:34.105161Z",
+      "modified": "2021-10-01T20:03:34.105161Z",
+      "name": "Demo"
+    },
+    {
+      "type": "grouping",
+      "spec_version": "2.1",
+      "id": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d",
+      "created": "2021-10-13T14:23:19.018783Z",
+      "modified": "2021-10-13T14:23:19.018783Z",
+      "context": "Behavior Set",
+      "object_refs": [
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-ed093e8279fe",
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab",
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890aa",
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890bb",
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890cc",
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd",
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ee",
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ff",
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890gg",
+        "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890hh",
+        "identity--b085a68a-bf48-4316-9667-37af78cba894"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-ed093e8279fe",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890aa",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890bb",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890cc",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a0ab",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ee",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ff",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890gg",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "part-of",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890hh",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "occurs-before",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890aa"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "occurs-before",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890aa",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890bb"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "occurs-before",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890aa",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890cc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "occurs-before",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890bb",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "occurs-before",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ee"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "occurs-before",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ee",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ff"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959a4c",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "occurs-before",
+      "source_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ff",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890gg"
+    },
+    {
+      "type": "extension-definition",
+      "spec_version": "2.1",
+      "id": "extension-definition--8185be67-a588-4791-b62a-968cd8c4bcd4",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-10-05T17:22:31.25295Z",
+      "modified": "2021-10-05T17:22:31.25295Z",
+      "name": "x-demo-org-behavior Extension Definition",
+      "schema": "tbd",
+      "version": "1.0.0",
+      "extension_types": [
+        "new-sdo"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959111",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "windows-registry-key--c5a4244e-22d5-5797-8f78-c5fc3d1c0bde",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890cc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959222",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcaaa",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959333",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcbbb",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959444",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcccc",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959555",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcddd",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959555",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcddd",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890aa"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959666",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "detects",
+      "source_ref": "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021000",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890aa"
+    },
+    {
+      "type": "windows-registry-key",
+      "spec_version": "2.1",
+      "id": "windows-registry-key--c5a4244e-22d5-5797-8f78-c5fc3d1c0bde",
+      "key": "\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+      "values": [
+        {
+          "name": "persist"
+        }
+      ],
+      "extensions": {
+        "x-winregkey-ext": {
+          "action": "modify",
+          "new_value": "true",
+          "process_id": "0x2498",
+          "process_name": "C:\\Windows\\regedit.exe"
+        }
+      }
+    },
+    {
+      "id": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcaaa",
+      "type": "process",
+      "spec_version": 2.1,
+      "object_marking_refs": [],
+      "granular_markings": [],
+      "is_defanged": false,
+      "is_hidden": false,
+      "pid": 0,
+      "created": "2021-06-03T18:42:29-04:00",
+      "cwd": "",
+      "command_line": "",
+      "opened_connection_refs": [],
+      "creator_user_ref": "",
+      "image_ref": "",
+      "parent_ref": "",
+      "child_refs": [],
+      "extensions": {
+        "extension-definition--f9dbe89c-0030-4a9d-8b78-0dcd0a0de874": {
+          "extension_type": "toplevel-property-extension",
+          "action": "created",
+          "new-process-name": [
+            "*outlook*",
+            "thunderbird",
+            "*mail*"
+          ],
+          "win-event-code": "4688"
+        }
+      }
+    },
+    {
+      "id": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcbbb",
+      "type": "process",
+      "spec_version": 2.1,
+      "object_marking_refs": [],
+      "granular_markings": [],
+      "is_defanged": false,
+      "is_hidden": false,
+      "pid": 0,
+      "created": "2021-06-03T18:42:29-04:00",
+      "cwd": "",
+      "command_line": "",
+      "opened_connection_refs": [],
+      "creator_user_ref": "",
+      "image_ref": "",
+      "parent_ref": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcaaa",
+      "child_refs": [],
+      "extensions": {
+        "extension-definition--f9dbe89c-0030-4a9d-8b78-0dcd0a0de874": {
+          "extension_type": "toplevel-property-extension",
+          "action": "created",
+          "creator-process-name": [
+            "*outlook*",
+            "thunderbird",
+            "*mail*"
+          ],
+          "new-process-name": [
+            "*edge*",
+            "*chrome*",
+            "*firefox*"
+          ],
+          "win-event-code": "4688"
+        }
+      }
+    },
+    {
+      "id": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcccc",
+      "type": "process",
+      "spec_version": 2.1,
+      "object_marking_refs": [],
+      "granular_markings": [],
+      "is_defanged": false,
+      "is_hidden": false,
+      "pid": 0,
+      "created": "2021-06-03T18:42:29-04:00",
+      "cwd": "",
+      "command_line": "*.docm|*.pptm|*.xlsm",
+      "opened_connection_refs": [],
+      "creator_user_ref": "",
+      "image_ref": "",
+      "parent_ref": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcbbb",
+      "child_refs": [],
+      "extensions": {
+        "extension-definition--f9dbe89c-0030-4a9d-8b78-0dcd0a0de874": {
+          "extension_type": "toplevel-property-extension",
+          "action": "created",
+          "creator-process-name": [
+            "*edge*",
+            "*chrome*",
+            "*firefox*"
+          ],
+          "new-process-name": [
+            "*word*",
+            "*powerpoint*",
+            "*excel*"
+          ],
+          "win-event-code": "4688"
+        }
+      }
+    },
+    {
+      "id": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcddd",
+      "type": "process",
+      "spec_version": 2.1,
+      "object_marking_refs": [],
+      "granular_markings": [],
+      "is_defanged": false,
+      "is_hidden": false,
+      "pid": 0,
+      "created": "2021-06-03T18:42:29-04:00",
+      "cwd": "",
+      "command_line": "",
+      "opened_connection_refs": [],
+      "creator_user_ref": "",
+      "image_ref": "",
+      "parent_ref": "process--862e625d-48bb-489e-8d4e-f7d8cd2fcccc",
+      "child_refs": [],
+      "extensions": {
+        "extension-definition--f9dbe89c-0030-4a9d-8b78-0dcd0a0de874": {
+          "extension_type": "toplevel-property-extension",
+          "action": "created",
+          "creator-process-name": [
+            "*word*",
+            "*powerpoint*",
+            "*excel*"
+          ],
+          "new-process-name": [
+            "powershell.exe",
+            "cmd.exe"
+          ],
+          "win-event-code": "4688"
+        }
+      }
+    },
+    {
+      "type": "x-demo-org-detection",
+      "spec_version": "2.1",
+      "id": "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021111",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-08-13T20:30:34Z",
+      "modified": "2021-08-13T20:30:34Z",
+      "name": "Process 1 - SpearPhish",
+      "data_sources": [
+        {
+          "EventCode": "4688",
+          "LogName": "Security",
+          "TaskCategory": "Process Creation",
+          "data_type": "WinEventLog:Security",
+          "Creator_Process_Name": [
+            "*outlook*",
+            "*thunderbird*",
+            "*mail*"
+          ],
+          "New_Process_Name": [
+            "*edge*",
+            "*chrome*",
+            "*firefox*"
+          ]
+        }
+      ],
+      "analytic": {
+        "rule": {
+          "title": "Spearphishing with Link",
+          "id": "spearphishing",
+          "status": "experimental",
+          "description": "Detects Office macro opening from browser.",
+          "tags": [
+            "attack.initial_access",
+            "attack.t1566.002"
+          ],
+          "author": "demo",
+          "date": "2021/06/07",
+          "logsource": {
+            "product": "windows",
+            "index": "main",
+            "category": "process_event"
+          },
+          "detection": {
+            "selection": {
+              "EventCode": "4688",
+              "Creator_Process_Name|contains": [
+                "outlook",
+                "thunderbird",
+                "mail"
+              ],
+              "New_Process_Name|contains": [
+                "edge",
+                "chrome",
+                "firefox"
+              ]
+            },
+            "condition": "selection"
+          },
+          "falsepositives": [
+            "Low"
+          ],
+          "level": "high"
+        },
+        "type": "Sigma Rule"
+      }
+    },
+    {
+      "type": "x-demo-org-detection",
+      "spec_version": "2.1",
+      "id": "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021222",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-08-13T20:30:34Z",
+      "modified": "2021-08-13T20:30:34Z",
+      "name": "Process 2 - SpearPhish",
+      "data_sources": [
+        {
+          "EventCode": "4688",
+          "LogName": "Security",
+          "TaskCategory": "Process Creation",
+          "data_type": "WinEventLog:Security",
+          "Creator_Process_Name": [
+            "*edge*",
+            "*chrome*",
+            "*firefox*"
+          ],
+          "Creator_Command_Line": [
+            "*docm*",
+            "*pptm*",
+            "*xlsm*"
+          ],
+          "New_Process_Name": [
+            "*word*",
+            "*powerpoint*",
+            "*excel*"
+          ]
+        }
+      ],
+      "analytic": {
+        "rule": {
+          "title": "Spearphishing with Link",
+          "id": "spearphishing",
+          "status": "experimental",
+          "description": "Detects Office macro opening from browser.",
+          "tags": [
+            "attack.initial_access",
+            "attack.t1566.002"
+          ],
+          "author": "demo",
+          "date": "2021/06/07",
+          "logsource": {
+            "product": "windows",
+            "index": "main",
+            "category": "process_event"
+          },
+          "detection": {
+            "selection": {
+              "EventCode": "4688",
+              "New_Process_Name|contains": [
+                "winword",
+                "excel",
+                "powerpoint"
+              ],
+              "Process_Command_Line|contains": [
+                "docm",
+                "xlsm",
+                "pptm"
+              ],
+              "Creator_Process_Name|contains": [
+                "edge",
+                "chrome",
+                "firefox"
+              ]
+            },
+            "condition": "selection"
+          },
+          "falsepositives": [
+            "Low"
+          ],
+          "level": "high"
+        },
+        "type": "Sigma Rule"
+      }
+    },
+    {
+      "type": "x-demo-org-detection",
+      "spec_version": "2.1",
+      "id": "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021000",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-08-13T20:30:34Z",
+      "modified": "2021-08-13T20:30:34Z",
+      "name": "Process - Execution",
+      "data_sources": [
+        {
+          "EventCode": "4688",
+          "LogName": "Security",
+          "TaskCategory": "Process Creation",
+          "data_type": "WinEventLog:Security",
+          "Creator_Process_Name": [
+            "*word*",
+            "*powerpoint*",
+            "*excel*"
+          ],
+          "New_Process_Name": [
+            "*.exe",
+            "*.dll"
+          ]
+        }
+      ],
+      "analytic": {
+        "rule": {
+          "title": "Execution",
+          "id": "execution",
+          "status": "experimental",
+          "description": "Detects Office macro execution",
+          "tags": [
+            "attack.execution",
+            "attack.t1059"
+          ],
+          "author": "demo",
+          "date": "2021/06/07",
+          "logsource": {
+            "product": "windows",
+            "index": "main",
+            "category": "process_event"
+          },
+          "detection": {
+            "condition": "run_macro and (not false_positive)",
+            "run_macro": {
+              "Creator_Process_Name|contains": [
+                "word",
+                "powerpoint",
+                "excel"
+              ],
+              "New_Process_Name|endswith": [
+                ".exe",
+                ".dll"
+              ],
+              "EventCode": "4688"
+            },
+            "false_positive": {
+              "New_Process_Name|contains": [
+                "splwow64"
+              ]
+            }
+          },
+          "falsepositives": [
+            "Low"
+          ],
+          "level": "high"
+        },
+        "type": "Sigma Rule"
+      }
+    },
+    {
+      "type": "x-demo-org-detection",
+      "spec_version": "2.1",
+      "id": "x-demo-org-detection--458c02c9-3635-42e4-8873-6785e00517e7",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2021-07-30T02:04:37Z",
+      "modified": "2021-07-30T02:04:37Z",
+      "name": "Registry - Persistence",
+      "data_sources": [
+        {
+          "EventCode": "4657",
+          "LogName": "Security",
+          "Message": "A registry value was modified.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-21-1102256457-2379380313-1247321256-500\n\tAccount Name:\t\tAdministrator\n\tAccount Domain:\t\tSP17\n\tLogon ID:\t\t0x1A1ADFE8\n\nObject:\n\tObject Name:\t\t\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\n\tObject Value Name:\tpersist\n\tHandle ID:\t\t0x918\n\tOperation Type:\t\tNew registry value created\n\nProcess Information:\n\tProcess ID:\t\t0x18f0\n\tProcess Name:\t\tC:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\n\nChange Information:\n\tOld Value Type:\t\t-\n\tOld Value:\t\t-\n\tNew Value Type:\t\tREG_SZ\n\tNew Value:\t\tTrue",
+          "TaskCategory": "Registry",
+          "data_type": "WinEventLog:Security"
+        }
+      ],
+      "analytic": {
+        "rule": {
+          "title": "Registry Run Keys",
+          "id": "registry persistence",
+          "status": "experimental",
+          "description": "Detects new registry run key created event.",
+          "tags": [
+            "attack.persistence",
+            "attack.t1547"
+          ],
+          "author": "demo",
+          "date": "2021/06/07",
+          "logsource": {
+            "product": "windows",
+            "index": "main",
+            "category": "registry_event"
+          },
+          "detection": {
+            "selection": {
+              "EventCode": "4657",
+              "Object_Name|contains": [
+                "Run",
+                "Shell Folders"
+              ]
+            },
+            "condition": "selection"
+          },
+          "falsepositives": [
+            "High"
+          ],
+          "level": "high"
+        },
+        "type": "Sigma Rule"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959666",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "detects",
+      "source_ref": "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021111",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959666",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "detects",
+      "source_ref": "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021222",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890ab"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-914343959666",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "detects",
+      "source_ref": "x-demo-org-detection--458c02c9-3635-42e4-8873-6785e00517e7",
+      "target_ref": "x-demo-org-behavior--edc99806-f8e9-4ee3-b2d4-1234567890cc"
+    },
+    {
+      "type": "x-demo-org-detection-group",
+      "spec_version": "2.1",
+      "id": "x-demo-org-detection-group--58834c29-4ceb-42a1-a218-321103021999",
+      "created": "2021-08-13T20:30:34Z",
+      "modified": "2021-08-13T20:30:34Z",
+      "name": "Reaper Lite Detection",
+      "description": "This detection group detects spearphishing, execution, and persistence",
+      "confidence": {
+        "low": 1,
+        "medium": 2,
+        "high": 3
+      },
+      "detection_ids": [
+        "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021000",
+        "x-demo-org-detection--458c02c9-3635-42e4-8873-6785e00517e7",
+        "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021111",
+        "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021222"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-111111111111",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "detects",
+      "source_ref": "x-demo-org-detection-group--58834c29-4ceb-42a1-a218-321103021999",
+      "target_ref": "grouping--cb508d31-469c-41d0-ab3d-fb78ed60b61d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-111111111222",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "contains",
+      "source_ref": "x-demo-org-detection-group--58834c29-4ceb-42a1-a218-321103021999",
+      "target_ref": "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021000"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-111111111333",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "contains",
+      "source_ref": "x-demo-org-detection-group--58834c29-4ceb-42a1-a218-321103021999",
+      "target_ref": "x-demo-org-detection--458c02c9-3635-42e4-8873-6785e00517e7"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-111111111444",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "contains",
+      "source_ref": "x-demo-org-detection-group--58834c29-4ceb-42a1-a218-321103021999",
+      "target_ref": "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021111"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37ac0c8d-f86d-4e56-aee9-111111111555",
+      "created": "2016-11-23T08:17:27.000Z",
+      "modified": "2016-11-23T08:17:27.000Z",
+      "relationship_type": "contains",
+      "source_ref": "x-demo-org-detection-group--58834c29-4ceb-42a1-a218-321103021999",
+      "target_ref": "x-demo-org-detection--58834c29-4ceb-42a1-a218-336103021222"
+    }
+  ]
+}
