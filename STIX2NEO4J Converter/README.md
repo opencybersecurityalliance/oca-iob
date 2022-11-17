@@ -1,4 +1,4 @@
-# STIX to Neo4J Uploader
+# STIX to Neo4J Converter
 This is a simple script meant to upload a STIX 2.1 JSON bundle into a NEO4J database. This script will allow any STIX 2.1 bundle to be converted to a NEO4J graph database, but it was particularly developed to help visualize the indicator of behavior reference implementation available at [here](https://github.com/opencybersecurityalliance/oca-iob/tree/main/apl_reference_implementation_bundle/revision_1).
 
 # Prerequisites
