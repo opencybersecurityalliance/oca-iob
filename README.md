@@ -1,4 +1,4 @@
-# Open Cybersecurity Alliance Indicators of Behavior Research
+# Open Cybersecurity Alliance Indicators of Behavior (IOB) Research
 
 ## Overview
 This repository contains code and reference implementations developed under various collaborations with the Open Cybersecurity Alliance Indicator of Behavior Working Group.
