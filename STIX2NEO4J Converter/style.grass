@@ -1,0 +1,168 @@
+node.attack-pattern {
+  color: #57C7E3;
+  border-color: #2870c2;
+  text-color-internal: #2A2C34;
+  defaultCaption: "<id>";
+  caption: "{name}";
+  diameter: 80px;
+}
+node.campaign {
+  color: #D9C8AE;
+  border-color: #c0a378;
+  text-color-internal: #2A2C34;
+  defaultCaption: "<id>";
+  caption: "{name}";
+  diameter: 50px;
+}
+node.identity {
+  color: #c0a378;
+  border-color: #c0a378;
+  text-color-internal: #2A2C34;
+  defaultCaption: "<id>";
+  caption: "{name}";
+  diameter: 65px;
+}
+node.x-demo-org-behavior {
+  caption: "{name}";
+  diameter: 65px;
+  color: #1A78BB;
+  border-color: #2870c2;
+  text-color-internal: #FFFFFF;
+}
+node.behavior {
+  caption: "{name}";
+  diameter: 65px;
+  color: #1A78BB;
+  border-color: #2870c2;
+  text-color-internal: #FFFFFF;
+}
+node.grouping {
+  caption: "{name}";
+  color: #1C736C;
+  border-color: #447666;
+  text-color-internal: #FFFFFF;
+  diameter: 65px;
+}
+node.extension-definition {
+  caption: "{name}";
+  diameter: 65px;
+  color: #FEB878;
+  border-color: #d7a013;
+  text-color-internal: #2A2C34;
+}
+relationship.refers_to {
+  color: #569480;
+  border-color: #447666;
+  text-color-internal: #FFFFFF;
+}
+relationship.created_by {
+  color: #FFC454;
+  border-color: #d7a013;
+  text-color-internal: #2A2C34;
+}
+relationship.part_of {
+  color: #569480;
+  border-color: #447666;
+  text-color-internal: #FFFFFF;
+  shaft-width: 1px;
+  caption: "<type>";
+}
+relationship.occurs_before {
+  color: #4C8EDA;
+  border-color: #2870c2;
+  text-color-internal: #FFFFFF;
+  shaft-width: 3px;
+}
+node.windows-registry-key {
+  caption: "{name}";
+  color: #2F9B35;
+  border-color: #447666;
+  text-color-internal: #FFFFFF;
+  diameter: 65px;
+}
+node.process {
+  caption: "{name}";
+  color: #91E281;
+  border-color: #5db665;
+  text-color-internal: #2A2C34;
+  diameter: 65px;
+}
+node.network-traffic {
+  caption: "{name}";
+  color: #369908;
+  border-color: #5db665;
+  text-color-internal: #2A2C34;
+  diameter: 65px;
+}
+node.ipv4-addr {
+  caption: "{name}";
+  color: #3e662c;
+  border-color: #5db665;
+  text-color-internal: #FFFFFF;
+  diameter: 65px;
+}
+node.x-demo-org-detection {
+  caption: "{name}";
+  diameter: 65px;
+  color: #D52721;
+  border-color: #eb2728;
+  text-color-internal: #FFFFFF;
+}
+relationship.detects {
+  color: #F16667;
+  border-color: #eb2728;
+  text-color-internal: #FFFFFF;
+  shaft-width: 3px;
+}
+node.x-demo-org-detection-group {
+  caption: "{name}";
+  color: #FF9990;
+  border-color: #da7298;
+  text-color-internal: #2A2C34;
+  diameter: 65px;
+}
+relationship.contains {
+  shaft-width: 3px;
+  color: #ECB5C9;
+  border-color: #da7298;
+  text-color-internal: #2A2C34;
+}
+relationship.Refers_To {
+  shaft-width: 3px;
+  color: #D9C8AE;
+  border-color: #c0a378;
+  text-color-internal: #2A2C34;
+}
+relationship.Created_By {
+  shaft-width: 3px;
+  color: #FFC454;
+  border-color: #d7a013;
+  text-color-internal: #2A2C34;
+}
+relationship.Parent_Of {
+  shaft-width: 3px;
+}
+relationship.indicates {
+  color: #8DCC93;
+  border-color: #5db665;
+  text-color-internal: #2A2C34;
+  shaft-width: 3px;
+}
+relationship.parent_of {
+  color: #8DCC93;
+  border-color: #5db665;
+  text-color-internal: #2A2C34;
+  shaft-width: 3px;
+}
+relationship.destination_of {
+  color: #8DCC93;
+  border-color: #5db665;
+  text-color-internal: #2A2C34;
+  shaft-width: 3px;
+}
+relationship.source_of {
+  color: #8DCC93;
+  border-color: #5db665;
+  text-color-internal: #2A2C34;
+  shaft-width: 3px;
+}
