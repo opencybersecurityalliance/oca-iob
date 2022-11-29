@@ -4,7 +4,7 @@
 
 The [Open Cybersecurity Alliance (OCA)](https://opencybersecurityalliance.org/) is an [OASIS Open Project](https://www.oasis-open.org/open-projects/) and welcomes participation by anyone, whether affiliated with OASIS or not. Substantive contributions and feedback are invited from all parties, following the common conventions for participation in GitHub public repository projects.
 
-Participation is expected to be consistent with our [Code of Conduct](https://github.com/opencybersecurityalliance/oasis-open-project/blob/68f8ed4f99a6c289f946cfe93a1e7c488b357b23/CODE_OF_CONDUCT.md), the licenses applicable this repository, and the acceptance of our [Contributor License Agreement](https://cla-assistant.io/opencybersecurityalliance/oca-admin), generally at the time of first contribution. 
+Participation is expected to be consistent with our [Code of Conduct](https://github.com/opencybersecurityalliance/oasis-open-project/blob/68f8ed4f99a6c289f946cfe93a1e7c488b357b23/CODE_OF_CONDUCT.md), the licenses applicable this repository, and the acceptance of our [Contributor License Agreement](https://cla-assistant.io/opencybersecurityalliance/), generally at the time of first contribution. 
 
 ## How to Contribute
 
