@@ -2,7 +2,7 @@
 
 ## Public Participation Invited
 
-The [Open Cybersecurity Alliance (OCA)](https://opencybersecurityalliance.org/) is an [OASIS Open Project](https://www.oasis-open.org/open-projects/) and welcomes participation by anyone, whether affiliated with OASIS or not. Substantive contributions and feedback are invited from all parties, following the common conventions for participation in GitHub public repository projects.
+The Indicators of Behavior (IOB) effort is a sub-project of the [Open Cybersecurity Alliance (OCA)](https://opencybersecurityalliance.org/) is an [OASIS Open Project](https://www.oasis-open.org/open-projects/) and welcomes participation by anyone, whether affiliated with OASIS or not. Substantive contributions and feedback are invited from all parties, following the common conventions for participation in GitHub public repository projects.
 
 Participation is expected to be consistent with our [Code of Conduct](https://github.com/opencybersecurityalliance/oasis-open-project/blob/68f8ed4f99a6c289f946cfe93a1e7c488b357b23/CODE_OF_CONDUCT.md), the licenses applicable this repository, and the acceptance of our [Contributor License Agreement](https://cla-assistant.io/opencybersecurityalliance/), generally at the time of first contribution. 
 
@@ -10,10 +10,14 @@ Participation is expected to be consistent with our [Code of Conduct](https://gi
 
 When contributing to the repositories in this project, please first discuss significant changes you wish to make via issue, email, GitHub discussion, or via the project's [email list](https://lists.oasis-open-projects.org/g/oca-iob-wg).
 
-### Issues
+Our project operates using the GitHub ["Fork and Pull"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models#fork-and-pull-model) collaborative development model. Interested contributors are encourages to fork the IOB repository and provide contributions as pull requests. Pull request will be reviewed by maintainers and discussed in IOB working meetings, and merged if approved.
 
-One of the best ways to communicate with the rest of the project contributors is by opening a GitHub issue.
+IOB maintainers are selected by acclamation by the IOB working group, and are the only participants with the privileges to merge pull requests. The current maintainers are:
 
+* Charles Frick, JHU/APL, @CharlesFrick
+* Kurt Karolenko, JHU/APL, @kkarolenko
+
+> Maintainers list updated 1 December 2022
 ### Discussions and announcements
 
 Longer discussions can be taken up via the [mailing list](https://lists.oasis-open-projects.org/g/oca-iob-wg). 
