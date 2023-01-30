@@ -1,0 +1,21 @@
+# Customize mitigations use case
+
+This use case is for a CTI consumer that has received a behavior bundle and wishes to extract and customize the shared mitigation workflows for use in their environment.
+
+## Sequence diagram
+The sequence of events is represented in the following diagram:
+
+<img src="/images/Customize_Mitigations_sequence.png" width=600>
+
+The sequence diagram shows the use case steps between the following entities:
+- A CTI consumer who wishes to customize detections shared within the bundle (CTI_Consumer)
+- A CTI Workstation (CTI_WS)
+- A Security Orchestration Automation and Response platform (SOAR) 
+- A Threat Intelligence Platform used by the consumer (TIP)
+
+## BPMN Workflow
+
+The [customize mitigations](CustomizeMitigations.bpmn) use case  is also provided in Business Process Modeling Notation (BPMN). The following image provides a visualization of the BPMN workflow:
+
+<img src="/images/CustomizeMitigations.png" width=1000> 
+

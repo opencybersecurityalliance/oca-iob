@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0eqo1yv" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.5.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:process id="Process_199jbfv" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_1qen4co</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1qen4co" sourceRef="StartEvent_1" targetRef="Activity_1fs4um9" />
+    <bpmn:userTask id="Activity_1fs4um9" name="CTI Updater IDs new info for an update">
+      <bpmn:incoming>Flow_1qen4co</bpmn:incoming>
+      <bpmn:outgoing>Flow_0h1atgl</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0h1atgl" sourceRef="Activity_1fs4um9" targetRef="Activity_17jnsy9" />
+    <bpmn:userTask id="Activity_17jnsy9" name="Request Existing Bundle from TAXII Client">
+      <bpmn:incoming>Flow_0h1atgl</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jwpqmc</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1jwpqmc" sourceRef="Activity_17jnsy9" targetRef="Activity_0xaahb1" />
+    <bpmn:serviceTask id="Activity_0xaahb1" name="TAXII Client Polls TAXII Server for Bundle">
+      <bpmn:incoming>Flow_1jwpqmc</bpmn:incoming>
+      <bpmn:outgoing>Flow_01qt4q8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_01qt4q8" sourceRef="Activity_0xaahb1" targetRef="Activity_0m415jp" />
+    <bpmn:userTask id="Activity_0m415jp" name="CTI Updater Edits CTI Data/ Relationships">
+      <bpmn:incoming>Flow_01qt4q8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0dn7wwt</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0dn7wwt" sourceRef="Activity_0m415jp" targetRef="Activity_0iptwge" />
+    <bpmn:userTask id="Activity_0iptwge" name="CTI Updater formats / validates STIX bundle update">
+      <bpmn:incoming>Flow_0dn7wwt</bpmn:incoming>
+      <bpmn:outgoing>Flow_1cf40ye</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1cf40ye" sourceRef="Activity_0iptwge" targetRef="Activity_1u4vdw6" />
+    <bpmn:userTask id="Activity_1u4vdw6" name="CTI Updater sends updated STIX to TAXII Server">
+      <bpmn:incoming>Flow_1cf40ye</bpmn:incoming>
+      <bpmn:outgoing>Flow_0r50c48</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_1ml4xxj" name="End">
+      <bpmn:incoming>Flow_0r50c48</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0r50c48" sourceRef="Activity_1u4vdw6" targetRef="Event_1ml4xxj" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_199jbfv">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1" bioc:stroke="#43a047" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#43a047">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="185" y="142" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vhq99t_di" bpmnElement="Activity_1fs4um9">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_096ottq_di" bpmnElement="Activity_17jnsy9">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rvr6ti_di" bpmnElement="Activity_0xaahb1">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0d9cvod_di" bpmnElement="Activity_0m415jp">
+        <dc:Bounds x="750" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bffjnp_di" bpmnElement="Activity_0iptwge">
+        <dc:Bounds x="910" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1g2zzzv_di" bpmnElement="Activity_1u4vdw6">
+        <dc:Bounds x="1070" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ml4xxj_di" bpmnElement="Event_1ml4xxj" bioc:stroke="#e53935" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#e53935">
+        <dc:Bounds x="1232" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1240" y="142" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1qen4co_di" bpmnElement="Flow_1qen4co">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0h1atgl_di" bpmnElement="Flow_0h1atgl">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jwpqmc_di" bpmnElement="Flow_1jwpqmc">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01qt4q8_di" bpmnElement="Flow_01qt4q8">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="750" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dn7wwt_di" bpmnElement="Flow_0dn7wwt">
+        <di:waypoint x="850" y="117" />
+        <di:waypoint x="910" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cf40ye_di" bpmnElement="Flow_1cf40ye">
+        <di:waypoint x="1010" y="117" />
+        <di:waypoint x="1070" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0r50c48_di" bpmnElement="Flow_0r50c48">
+        <di:waypoint x="1170" y="117" />
+        <di:waypoint x="1232" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
