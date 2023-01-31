@@ -5,7 +5,7 @@ This use case is for a CTI producer that wishes to update the information within
 ## Sequence diagram
 The sequence of events is represented in the following diagram:
 
-<img src="/images/Update_Bundle_sequence.png" width=600>
+<img src="/iob_use_cases/images/Update_Bundle_sequence.png" width=600>
 
 The sequence diagram shows the use case steps between the following entities:
 - A CTI user who updates the information (CTI_Updater)
@@ -18,5 +18,5 @@ The sequence diagram shows the use case steps between the following entities:
 
 The [update bundle](Update%20Bundle.bpmn) use case  is also provided in Business Process Modeling Notation (BPMN). The following image provides a visualization of the BPMN workflow:
 
-<img src="/images/UpdateBundle.png" width=1000> 
+<img src="/iob_use_cases/images/UpdateBundle.png" width=1000> 
 
