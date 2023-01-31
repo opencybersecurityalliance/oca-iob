@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0cua17d" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.5.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:process id="Process_1nu7zgs" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_18bme16</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_18bme16" sourceRef="StartEvent_1" targetRef="Activity_1u37j39" />
+    <bpmn:serviceTask id="Activity_1u37j39" name="Poll TAXII Server to retrieve new bundle">
+      <bpmn:incoming>Flow_18bme16</bpmn:incoming>
+      <bpmn:outgoing>Flow_0204ffe</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0204ffe" sourceRef="Activity_1u37j39" targetRef="Activity_11vau0h" />
+    <bpmn:serviceTask id="Activity_11vau0h" name="Broker enriches CTI (optional)">
+      <bpmn:incoming>Flow_0204ffe</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rb893u</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1rb893u" sourceRef="Activity_11vau0h" targetRef="Gateway_014lbbi" />
+    <bpmn:parallelGateway id="Gateway_014lbbi">
+      <bpmn:incoming>Flow_1rb893u</bpmn:incoming>
+      <bpmn:outgoing>Flow_0emgis8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1dqat3l</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_0emgis8" sourceRef="Gateway_014lbbi" targetRef="Activity_1s360ll" />
+    <bpmn:serviceTask id="Activity_1s360ll" name="Add CTI to Broker Platform">
+      <bpmn:incoming>Flow_0emgis8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1tgf8p4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1dqat3l" sourceRef="Gateway_014lbbi" targetRef="Activity_1ye91ag" />
+    <bpmn:serviceTask id="Activity_1ye91ag" name="Create Enriched STIX">
+      <bpmn:incoming>Flow_1dqat3l</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vva0r8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1vva0r8" sourceRef="Activity_1ye91ag" targetRef="Activity_1mz0wje" />
+    <bpmn:serviceTask id="Activity_1mz0wje" name="Send STIX to broker TAXII Server">
+      <bpmn:incoming>Flow_1vva0r8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0iaup2n</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_1man75j" name="End">
+      <bpmn:incoming>Flow_0iaup2n</bpmn:incoming>
+      <bpmn:incoming>Flow_1tgf8p4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0iaup2n" sourceRef="Activity_1mz0wje" targetRef="Event_1man75j" />
+    <bpmn:sequenceFlow id="Flow_1tgf8p4" sourceRef="Activity_1s360ll" targetRef="Event_1man75j" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1nu7zgs">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1" bioc:stroke="#43a047" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#43a047">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="185" y="142" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1w6ee17_di" bpmnElement="Activity_1u37j39">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1civ32t_di" bpmnElement="Activity_11vau0h">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1srnekx_di" bpmnElement="Gateway_014lbbi">
+        <dc:Bounds x="595" y="92" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0gh50rh_di" bpmnElement="Activity_1s360ll">
+        <dc:Bounds x="710" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ey9zv3_di" bpmnElement="Activity_1ye91ag">
+        <dc:Bounds x="710" y="190" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xbxtgl_di" bpmnElement="Activity_1mz0wje">
+        <dc:Bounds x="880" y="190" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1man75j_di" bpmnElement="Event_1man75j" bioc:stroke="#e53935" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#e53935">
+        <dc:Bounds x="1052" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1060" y="255" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_18bme16_di" bpmnElement="Flow_18bme16">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0204ffe_di" bpmnElement="Flow_0204ffe">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rb893u_di" bpmnElement="Flow_1rb893u">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="595" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0emgis8_di" bpmnElement="Flow_0emgis8">
+        <di:waypoint x="645" y="117" />
+        <di:waypoint x="710" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dqat3l_di" bpmnElement="Flow_1dqat3l">
+        <di:waypoint x="620" y="142" />
+        <di:waypoint x="620" y="230" />
+        <di:waypoint x="710" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vva0r8_di" bpmnElement="Flow_1vva0r8">
+        <di:waypoint x="810" y="230" />
+        <di:waypoint x="880" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iaup2n_di" bpmnElement="Flow_0iaup2n">
+        <di:waypoint x="980" y="230" />
+        <di:waypoint x="1052" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tgf8p4_di" bpmnElement="Flow_1tgf8p4">
+        <di:waypoint x="810" y="117" />
+        <di:waypoint x="1070" y="117" />
+        <di:waypoint x="1070" y="212" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
