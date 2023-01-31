@@ -6,7 +6,7 @@ The Indicator of Behavior Sub-Project within the Open Cybersecurity Alliance has
 
 The following diagram provides a high level overview of the use cases:
 
-![Use Case Overview](/images/BehaviorBundle_Use_Cases.png)
+![Use Case Overview](/iob_use_cases/images/BehaviorBundle_Use_Cases.png)
 
 ## Use case details
 
