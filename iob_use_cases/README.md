@@ -12,14 +12,14 @@ The following diagram provides a high level overview of the use cases:
 
 Additional information on the use cases is available within the sub-folders of this section of the repository.
 
-- [Creating a behavior bundle](/use_cases/Create_Bundle)
-- [Updating a behavior bundle](/use_cases/Update_Bundle)
-- [Sharing a behavior bundle](/use_cases/Share_Bundle)
-- [Formatting a behavior bundle](/use_cases/Format_Bundle)
-- [Receiving a behavior bundle](/use_cases/Receive_Bundle)
-- [Customizing the detections within a behavior bundle](/use_cases/Customize_Detections)
-- [Customizing the correlations within a behavior bundle](/use_cases/Customize_Correlations)
-- [Customizing the mitigations within a behavior bundle](/use_cases/Customize_Mitigations)
+- [Creating a behavior bundle](/iob_use_cases/use_cases/Create_Bundle)
+- [Updating a behavior bundle](/iob_use_cases/use_cases/Update_Bundle)
+- [Sharing a behavior bundle](/iob_use_cases/use_cases/Share_Bundle)
+- [Formatting a behavior bundle](/iob_use_cases/use_cases/Format_Bundle)
+- [Receiving a behavior bundle](/iob_use_cases/use_cases/Receive_Bundle)
+- [Customizing the detections within a behavior bundle](/iob_use_cases/use_cases/Customize_Detections)
+- [Customizing the correlations within a behavior bundle](/iob_use_cases/use_cases/Customize_Correlations)
+- [Customizing the mitigations within a behavior bundle](/iob_use_cases/use_cases/Customize_Mitigations)
 
 ## BPMN reference
 
