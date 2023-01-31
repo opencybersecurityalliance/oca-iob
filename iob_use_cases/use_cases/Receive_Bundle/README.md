@@ -5,7 +5,7 @@ This use case is for a CTI broker or consumer that wishes to receive a STIX bund
 ## Sequence diagram
 The sequence of events is represented in the following diagram:
 
-<img src="/images/Receive_Bundle_sequence.png" width=600>
+<img src="/iob_use_cases/images/Receive_Bundle_sequence.png" width=600>
 
 The sequence diagram shows the use case steps between the following entities:
 - A CTI consumer who wishes to receive the bundle (CTI_Consumer)
@@ -17,5 +17,5 @@ The sequence diagram shows the use case steps between the following entities:
 
 The [receive bundle](ReceiveBundle.bpmn) use case  is also provided in Business Process Modeling Notation (BPMN). The following image provides a visualization of the BPMN workflow:
 
-<img src="/images/ReceiveBundle.png" width=1000> 
+<img src="/iob_use_cases/images/ReceiveBundle.png" width=1000> 
 
