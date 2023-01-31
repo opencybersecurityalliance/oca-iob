@@ -1,4 +1,4 @@
-<img src="/images/OCA-1.png" width="200">
+<img src="/iob_use_cases/images/OCA-1.png" width="200">
 
 # Indicator of behavior use cases
 
@@ -25,7 +25,7 @@ Additional information on the use cases is available within the sub-folders of t
 
 The use cases are provided in Business Process Modeling Notation (BPMN) format. The following diagram provides an overview of the BPMN elements used within these workflows.
 
-<img src="/images/Simple_BPMN_Guide.png" width="1000">
+<img src="/iob_use_cases/images/Simple_BPMN_Guide.png" width="1000">
 
 BPMN is a standard for modeling business process that is used for the workflows in this repository. It is maintained by the Object Management Group and full documentation is available on the [BPMN Specification Website](https://www.omg.org/spec/BPMN/2.0/About-BPMN/). These files are based in XML and can be read using a variety of [tools](https://bpmnmatrix.github.io).
 
