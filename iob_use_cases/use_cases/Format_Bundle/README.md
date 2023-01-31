@@ -5,7 +5,7 @@ This use case is for a CTI broker that wishes to format received STIX bundles fo
 ## Sequence diagram
 The sequence of events is represented in the following diagram:
 
-<img src="/images/Format_Behavior_Bundle_sequence.png" width=600>
+<img src="/iob_use_cases/images/Format_Behavior_Bundle_sequence.png" width=600>
 
 The sequence diagram shows the use case steps between the following entities:
 - A CTI broker that wishes to format the CTI within the bundle for an intelligence platform (CTI_Broker)
@@ -18,5 +18,5 @@ The sequence diagram shows the use case steps between the following entities:
 
 The [format bundle](FormatBundle.bpmn) use case  is also provided in Business Process Modeling Notation (BPMN). The following image provides a visualization of the BPMN workflow:
 
-<img src="/images/FormatBundle.png" width=1000> 
+<img src="/iob_use_cases/images/FormatBundle.png" width=1000> 
 
