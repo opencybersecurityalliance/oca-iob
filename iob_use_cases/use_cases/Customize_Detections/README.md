@@ -5,7 +5,7 @@ This use case is for a CTI consumer that has received a behavior bundle and wish
 ## Sequence diagram
 The sequence of events is represented in the following diagram:
 
-<img src="/images/Customize_Detections_sequence.png" width=600>
+<img src="/iob_use_cases/images/Customize_Detections_sequence.png" width=600>
 
 The sequence diagram shows the use case steps between the following entities:
 - A CTI consumer who wishes to customize detections shared within the bundle (CTI_Consumer)
@@ -17,5 +17,5 @@ The sequence diagram shows the use case steps between the following entities:
 
 The [customize detections](CustomizeDetections.bpmn) use case  is also provided in Business Process Modeling Notation (BPMN). The following image provides a visualization of the BPMN workflow:
 
-<img src="/images/CustomizeDetections.png" width=1000> 
+<img src="/iob_use_cases/images/CustomizeDetections.png" width=1000> 
 
