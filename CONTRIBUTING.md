@@ -4,7 +4,7 @@
 
 The Indicators of Behavior (IOB) effort is a sub-project of the [Open Cybersecurity Alliance (OCA)](https://opencybersecurityalliance.org/) is an [OASIS Open Project](https://www.oasis-open.org/open-projects/) and welcomes participation by anyone, whether affiliated with OASIS or not. Substantive contributions and feedback are invited from all parties, following the common conventions for participation in GitHub public repository projects.
 
-Participation is expected to be consistent with our [Code of Conduct](https://github.com/opencybersecurityalliance/oasis-open-project/blob/68f8ed4f99a6c289f946cfe93a1e7c488b357b23/CODE_OF_CONDUCT.md), the licenses applicable this repository, and the acceptance of our [Contributor License Agreement](https://cla-assistant.io/opencybersecurityalliance/), generally at the time of first contribution. 
+Participation is expected to be consistent with our [Code of Conduct](https://github.com/opencybersecurityalliance/oasis-open-project/blob/68f8ed4f99a6c289f946cfe93a1e7c488b357b23/CODE_OF_CONDUCT.md), the licenses applicable this repository, and the acceptance of our [Contributor License Agreement](https://www.oasis-open.org/open-projects/cla/oasis-open-projects-individual-contributor-license-agreement-i-cla/), generally at the time of first contribution. 
 
 ## How to Contribute
 
@@ -32,7 +32,7 @@ The IOB project uses Slack for ad hoc discussion. If you wish to join the channe
 
 ### About the CLA Bot
 
-When you first submit a pull request, CLA Assistant, a bot, will check to see whether you have previously signed the [Individual CLA](https://github.com/oasis-open-projects/documentation/blob/master/policy/clas-and-special-covenant.md). If you have already done so, this check will pass. If not, the bot will comment on the PR with a link and instruction for you to click and sign the CLA electronically via GitHub. If you use different GitHub accounts for work and personal use, please make sure you are signed in to the correct account.
+When you first submit a pull request, CLA Assistant, a bot, will check to see whether you have previously signed the [Individual CLA][https://github.com/oasis-open-projects/documentation/blob/master/policy/clas-and-special-covenant.md](https://cla-assistant.io/opencybersecurityalliance/oasis-open-project). If you have already done so, this check will pass. If not, the bot will comment on the PR with a link and instruction for you to click and sign the CLA electronically via GitHub. If you use different GitHub accounts for work and personal use, please make sure you are signed in to the correct account.
 
 ## Feedback
 
