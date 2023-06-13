@@ -14,3 +14,6 @@ IOB holds monthly meetings via Zoom on the second Tuesday of the month from 1:00
 
 ## Code of Conduct
 This Sub-Project follows the OASIS Code of Conduct.
+
+## Acknowledgements
+The IOB Sub-Project wishes to thank Dr. Vasileios Mavroeidis and his teams at University of Oslo / Cyentific AS for their technical discussions on best practices to represent CACAO playbooks within STIX.
