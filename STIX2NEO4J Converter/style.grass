@@ -1,3 +1,45 @@
+node.x-oca-playbook {
+  caption: "{name}";
+  color: #c795e6;
+  border-color: #06000a;
+  text-color-internal: #2A2C34;
+  diameter: 65px;
+}
+node.domain-name {
+  caption: "{name}";
+  color: #819989;
+  border-color: #06000a;
+  text-color-internal: #2A2C34;
+  diameter: 65px;
+}
+node.observed-data {
+  caption: "{name}";
+  color: #49cf19;
+  border-color: #06000a;
+  text-color-internal: #2A2C34;
+  diameter: 65px;
+}
+node.x-mitre-data-source {
+  caption: "{name}";
+  color: #cc5f16;
+  border-color: #06000a;
+  text-color-internal: #2A2C34;
+  diameter: 65px;
+}
+node.x-mitre-data-component {
+  caption: "{name}";
+  color: #db6018;
+  border-color: #06000a;
+  text-color-internal: #2A2C34;
+  diameter: 65px;
+}
+node.x-oca-detector {
+  caption: "{name}";
+  color: #a11a15;
+  border-color: #06000a;
+  text-color-internal: #FFFFFF;
+  diameter: 65px;
+}
 node.attack-pattern {
   color: #57C7E3;
   border-color: #2870c2;
@@ -25,6 +67,13 @@ node.identity {
 node.x-demo-org-behavior {
   caption: "{name}";
   diameter: 65px;
+  color: #1A78BB;
+  border-color: #2870c2;
+  text-color-internal: #FFFFFF;
+}
+node.x-oca-behavior {
+  caption: "{name}";
+  diameter: 80px;
   color: #1A78BB;
   border-color: #2870c2;
   text-color-internal: #FFFFFF;
@@ -108,6 +157,20 @@ node.x-demo-org-detection {
   border-color: #eb2728;
   text-color-internal: #FFFFFF;
 }
+node.course-of-action {
+  caption: "{name}";
+  diameter: 65px;
+  color: #bd2d86;
+  border-color: #2A2C34;
+  text-color-internal: #FFFFFF;
+}
+node.x-oca-detection {
+  caption: "{name}";
+  diameter: 65px;
+  color: #D52721;
+  border-color: #eb2728;
+  text-color-internal: #FFFFFF;
+}
 relationship.detects {
   color: #F16667;
   border-color: #eb2728;
@@ -115,6 +178,13 @@ relationship.detects {
   shaft-width: 3px;
 }
 node.x-demo-org-detection-group {
+  caption: "{name}";
+  color: #FF9990;
+  border-color: #da7298;
+  text-color-internal: #2A2C34;
+  diameter: 65px;
+}
+node.x-oca-detection-group {
   caption: "{name}";
   color: #FF9990;
   border-color: #da7298;
