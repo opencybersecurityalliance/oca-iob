@@ -1,0 +1,78 @@
+{
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/detection-group.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "detection-group",
+  "description": "Detection Groupings detect a set of behaviors by containing references to detections and correlation logic on how the detections relate to each other.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/core.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of this object, which MUST be the literal `x-oca-detection-group`.",
+          "enum": [
+            "x-oca-detection-group"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^x-oca-detection-group--"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name used to identify the Detection Group."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description that provides more details and context about the Detection Group, potentially including its purpose and its key characteristics."
+        },
+        "correlation_workflows": {
+          "type": "array",
+          "description": "List of entries defining how the detections can be correlated together. Each entry consists of a workflow, the type of workflow (e.g. base64 encoded BPMN file), and a note with additional context.",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Type of encoding used to represent the workflow (e.g. BPMN - base64 encoded .bpmn file)."
+                },
+                "note": {
+                  "type": "string",
+                  "description": "Note providing additional context to the workflow."
+                },
+                "workflow": {
+                  "type": "string",
+                  "description": "String representation of the correlation workflow."
+                }
+              },
+              "required": [
+                "type",
+                "note",
+                "workflow"
+              ]
+            }
+          ]
+        },
+        "detection_ids": {
+          "type": "array",
+          "description": "List of references to x-oca-detection SDOs associated with the Detection Group.",
+          "items": [
+            {
+              "$ref": "../common/identifier.json"
+            },
+            "minItems": 1
+          ]
+        }
+      }
+    }
+  ],
+  "required": [
+    "name",
+    "correlation_workflows",
+    "detection_ids"
+  ]
+}

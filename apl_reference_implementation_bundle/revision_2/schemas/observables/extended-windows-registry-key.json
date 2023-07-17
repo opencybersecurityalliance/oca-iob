@@ -1,0 +1,66 @@
+{
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/observables/extended-windows-registry-key.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "extended Windows registry key",
+  "description": "This extended Windows registry key object contains fields from Windows Security Event 4657 (registry value modified) for additional context.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../observables/windows-registry-key.json"
+    },
+    {
+      "properties": {
+        "extensions": {
+          "type": "object",
+          "properties": {
+            "extension-definition--2cf8c8c2-69f5-40f7-aa34-efcef2b912b1": {
+              "type": "object",
+              "properties": {
+                "extension_type": {
+                  "type": "string",
+                  "description": "extension_type, which MUST be the literal `property-extension`",
+                  "enum": [
+                    "property-extension"
+                  ]
+                },
+                "action": {
+                  "type": "string",
+                  "description": "Action performed on the registry key."
+                },
+                "user": {
+                  "type": "string",
+                  "description": "User account associated with the process."
+                },
+                "computer": {
+                  "type": "string",
+                  "description": "Computer hostname associated with the process."
+                },
+                "new_value": {
+                  "type": "string",
+                  "description": "New value of the registry key if a change has been made."
+                },
+                "process_id": {
+                  "type": "string",
+                  "description": "Process ID of the process that modified the registry."
+                },
+                "process_name": {
+                  "type": "string",
+                  "description": "Name of the process that modified the registry."
+                }
+              },
+              "required": [
+                "extension_type"
+              ]
+            }
+          },
+          "required": [
+            "extension-definition--2cf8c8c2-69f5-40f7-aa34-efcef2b912b1"
+          ]
+        }
+      }
+    }
+  ],
+  "required": [
+    "extensions"
+  ]
+}

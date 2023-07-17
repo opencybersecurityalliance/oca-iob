@@ -1,0 +1,90 @@
+{
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/playbook.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "playbook",
+  "description": "",
+  "type": "object",
+  "allOf": [
+	{
+	  "$ref": "../common/core.json"
+	},
+	{
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of this object, which MUST be the literal `x-oca-playbook`.",
+          "enum": [
+             "x-oca-playbook"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^x-oca-playbook--"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name used to identify the playbook."
+        },
+        "description": {
+          "type": "string",
+          "description": "An explanation, details, and more context about what this playbook does and tries to accomplish."
+        },
+        "playbook_id": {
+          "type": "string",
+          "description": "A value that identifies the playbook. If the playbook itself includes a unique identifier (e.g., CACAO playbooks may include UUIDv4 or deterministic UUIDv5 identifiers), then playbook_id SHOULD use the same identifier for correlation purposes. Otherwise, the sharing entity MAY generate a UUIDv4 identifier."
+        },
+        "playbook_format": {
+          "type": "string",
+          "description": "The standard/format/notation the playbook conforms to (e.g., CACAO, BPMN, Ansible)."
+        },
+        "playbook_type": {
+          "type": "array",
+          "description": "A list of playbook types that specifies the operational roles this playbook addresses. Each element SHOULD be from open vocab - playbook-type-ov.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "playbook_bin": {
+          "type": "string",
+          "description": "The entire playbook encoded in base64."
+        },
+        "playbook_abstraction": {
+          "type": "string",
+          "description": "The playbook’s level of abstraction. For example, a playbook can contain descriptions of processes for cybersecurity personnel or specific commands for an orchestrator to consume and execute. The value SHOULD come from open vocab playbook-abstraction-ov."
+        },
+        "playbook_creation_time": {
+          "description": "The time at which the first version of this playbook was created. The timstamp value MUST be precise to the nearest millisecond.",
+          "allOf": [
+            {
+              "$ref": "../common/timestamp.json"
+            },
+            {
+              "title": "timestamp_millis",
+              "pattern": "T\\d{2}:\\d{2}:\\d{2}\\.\\d{3,}Z$"
+            }
+          ]
+        },
+        "playbook_modification_time": {
+          "description": "The time that this particular version of this playbook was modified. The timstamp value MUST be precise to the nearest millisecond.",
+          "allOf": [
+            {
+              "$ref": "../common/timestamp.json"
+            },
+            {
+              "title": "timestamp_millis",
+              "pattern": "T\\d{2}:\\d{2}:\\d{2}\\.\\d{3,}Z$"
+            }
+          ]
+        },
+        "playbook_creator": {
+          "$ref": "../common/identifier.json",
+          "description": "The identifier of the entity that created the playbook."
+        }
+      }
+    }
+  ],
+  "required": [
+    "name"
+  ]
+}

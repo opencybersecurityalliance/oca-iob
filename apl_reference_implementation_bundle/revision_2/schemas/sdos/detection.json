@@ -1,0 +1,62 @@
+{
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/detection.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "detection",
+  "description": "Detections contain logic to detect an adversary behavior.",
+  "type": "object",
+  "allOf": [
+	{
+	  "$ref": "../common/core.json"
+	},
+	{
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of this object, which MUST be the literal `x-oca-detection`.",
+          "enum": [
+             "x-oca-detection"
+          ]
+
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^x-oca-detection--"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name used to identify the detection."
+        },
+        "data_sources": {
+          "type": "array",
+          "description": "Information about the data event that the detection targets.",
+          "items": [
+            {
+              "$ref": "../common/dictionary.json"
+            }
+          ]
+        },
+        "analytic": {
+          "type": "object",
+          "description": "Base64 encoded logic defining the detection along with the type of rule (e.g. Sigma rule).",
+          "properties": {
+            "rule": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "rule",
+            "type"
+          ]
+        }
+      }
+    }
+  ],
+  "required": [
+    "name",
+    "data_sources",
+    "analytic"
+  ]
+}
