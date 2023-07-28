@@ -25,6 +25,7 @@ import json
 from typing import List
 from py2neo import Graph, Node
 from getpass import getpass
+from tqdm import tqdm
 
 #Import variables
 BundleName = input("Enter the name you want for your bundle: ")
@@ -61,22 +62,18 @@ class NeoUploader(object):
 
     # Make Nodes
     def make_nodes(self):
-        for apobj in self.nodes:
+        total_nodes=len(self.nodes)
+        for idx, apobj in tqdm(enumerate(self.nodes), total=total_nodes, desc="Making Nodes", unit="node"):
             keys = apobj.keys()
             node_contents = dict()
-            print('------- Make Node ----------')
             #If the SCO does not have a name field, use the type as name
             if 'name' not in keys:
-                print(f'No name present -- Using Type: {apobj["type"]}')
                 node_name = apobj["type"]
             else:
-                print(apobj['name'])
                 node_name = apobj["name"]
-            print(apobj['type'])
             # add id and type to node contents
             node_contents["ap_id"] = apobj["id"]
             node_contents["type"] = apobj["type"]
-            print('----------------------------')
             # store rest of object contents in node contents
             for key in keys:
                 if key not in ["type", "name", "id"]:
@@ -101,7 +98,8 @@ class NeoUploader(object):
     # create relationships that exist outside of relationship objects
     # such as Created_by and Parent_Of
     def __make_inferred_relations(self):
-        for apobj in self.nodes:
+        total_nodes=len(self.nodes)
+        for idx, apobj in tqdm(enumerate(self.nodes), total=total_nodes, desc="Checking Inferred Relationships", unit="node"):
             for k in apobj.keys():
                 k_tokens = k.split("_")
                 # find refs, but ignore external_references since they aren't objects
@@ -124,7 +122,8 @@ class NeoUploader(object):
 
     # Make Relationships
     def make_relationships(self):
-        for apobj in self.relations:
+        total_rels=len(self.relations)
+        for idx, apobj in tqdm(enumerate(self.relations), total=total_rels, desc="Making Relationships", unit="rel"):
             # Define Relationship Type
             reltype = str(apobj['relationship_type'])
             # Fix Relationships with hyphens, neo4j will throw syntax error as
