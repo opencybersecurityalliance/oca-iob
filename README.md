@@ -3,9 +3,9 @@
 ## Overview
 This repository contains code and reference implementations developed under various collaborations with the Open Cybersecurity Alliance Indicator of Behavior Sub-Project.
 
-An overview of the Sub-Project is available [here](https://github.com/opencybersecurityalliance/documentation/blob/master/iob-wg/IOB%20WG%20Overview.pdf)
+An overview of the Sub-Project is available [here](https://github.com/opencybersecurityalliance/oca-iob/blob/main/Presentations/IOB%20WG%20Overview.pdf)
 
-The IOB WG charter is available [here](https://github.com/opencybersecurityalliance/documentation/blob/master/iob-wg/charter.md).
+The IOB WG charter is available [here](https://github.com/opencybersecurityalliance/oca-iob/blob/main/charter.md).
 
 ## Join US
 You can join the IOB sub-project by sending a blank email message to our [Mailing List](mailto:oca-iob-wg+subscribe@lists.oasis-open-projects.org) or joining our [slack channel](https://join.slack.com/t/open-cybersecurity/shared_invite/zt-19pliofsm-L7eSSB8yzABM2Pls1nS12w).
