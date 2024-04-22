@@ -1,0 +1,69 @@
+{
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/behavior.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "behavior",
+  "description": "Behavior objects define adversary behaviors associated with higher level MITRE ATT&CK tactics and techniques. The Attack Pattern SDO may have multiple behaviors associated with it. For example, a spearphishing attack may employ multiple behaviors (usage of email attachments, process modifying a registry key, network patterns, etc.).",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/core.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of this object, which MUST be the literal `x-oca-behavior`.",
+          "enum": [
+            "x-oca-behavior"
+          ]
+        },
+        "id": {
+          "title": "id",
+          "pattern": "^x-oca-behavior--"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name used to identify the Behavior."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of Behavior."
+        },
+        "behavior_class": {
+          "type": "string",
+          "description": "The class of behavior. The value for this property SHOULD come from the behavior-class-ov open vocabulary."
+        },
+        "tactic": {
+          "type": "string",
+          "description": "MITRE ATT&CK tactic of the Behavior."
+        },
+        "technique": {
+          "type": "string",
+          "description": "MITRE ATT&CK technique of the Behavior."
+        },
+        "first_seen": {
+          "description": "The first_seen property represents the time that this behavior was first seen. The timstamp value MUST be precise to the nearest millisecond.",
+          "allOf": [
+            {
+              "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json"
+            },
+            {
+            "title": "timestamp_millis",
+            "pattern": "T\\d{2}:\\d{2}:\\d{2}\\.\\d{3,}Z$"
+            }
+          ]
+        },
+        "platforms": {
+          "type": "array",
+          "description": "Platforms the Behavior was seen on. Each entry may list contextual data about the platform such as the OS and OS version number.",
+          "items": {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/dictionary.json"
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "name"
+  ]
+}
