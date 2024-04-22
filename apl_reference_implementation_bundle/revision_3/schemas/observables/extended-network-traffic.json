@@ -1,0 +1,54 @@
+{
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/observables/extended-network-traffic.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "extended network traffic",
+  "description": "This extended network traffic object contains fields from Real Intelligence Threat Analytics (RITA) for additional context regarding beaconing likelihood.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/observables/network-traffic.json"
+    },
+    {
+      "properties": {
+        "extensions": {
+          "type": "object",
+          "properties": {
+            "extension-definition--3b7505ce-2a18-496e-aa58-311dac6c1473": {
+              "type": "object",
+              "properties": {
+                "extension_type": {
+                  "type": "string",
+                  "description": "extension_type, which MUST be the literal `property-extension`",
+                  "enum": [
+                    "property-extension"
+                  ]
+                },
+                "connections": {
+                  "type": "number",
+                  "description": "Number of connections reported by RITA."
+                },
+                "score": {
+                  "type": "number",
+                  "description": "Beaconing score reported by RITA."
+                },
+                "computer": {
+                  "type": "string",
+                  "description": "Computer hostname associated with the process."
+                }
+              },
+              "required": [
+                "extension_type"
+              ]
+            }
+          },
+          "required": [
+            "extension-definition--3b7505ce-2a18-496e-aa58-311dac6c1473"
+          ]
+        }
+      }
+    }
+  ],
+  "required": [
+    "extensions"
+  ]
+}

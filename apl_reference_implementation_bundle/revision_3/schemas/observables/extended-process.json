@@ -1,0 +1,62 @@
+{
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/observables/extended-process.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "extended process",
+  "description": "This extended process object contains fields from Windows Security Event 4688 (new process created) for additional context.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/observables/process.json"
+    },
+    {
+      "properties": {
+        "extensions": {
+          "type": "object",
+          "properties": {
+            "extension-definition--f9dbe89c-0030-4a9d-8b78-0dcd0a0de874": {
+              "type": "object",
+              "properties": {
+                "extension_type": {
+                  "type": "string",
+                  "description": "extension_type, which MUST be the literal `property-extension`",
+                  "enum": [
+                    "property-extension"
+                  ]
+                },
+                "operation_type": {
+                  "type": "string",
+                  "description": "Operation associated with the process. For Windows Event 4688, this should be the literal `created`, signifying that a new process has been created."
+                },
+                "computer": {
+                  "type": "string",
+                  "description": "Computer hostname associated with the process."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Process name or REGEX pattern to match against."
+                },
+                "win_event_code": {
+                  "type": "integer",
+                  "description": "Windows Event Code number."
+                },
+                "creator_user": {
+                  "type": "string",
+                  "description": "User account associated with the process."
+                }
+              },
+              "required": [
+                "extension_type"
+              ]
+            }
+          },
+          "required": [
+            "extension-definition--f9dbe89c-0030-4a9d-8b78-0dcd0a0de874"
+          ]
+        }
+      }
+    }
+  ],
+  "required": [
+    "extensions"
+  ]
+}
