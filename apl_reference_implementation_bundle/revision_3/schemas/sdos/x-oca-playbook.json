@@ -1,0 +1,110 @@
+{
+    "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-playbook.json",
+    "$schema": "http://json-schema.org/draft/2020-12/schema#",
+    "title": "x-oca-playbook",
+    "description": "A Playbook object represents a structured process, such as an orchestration workflow, alongside associated metadata.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The value of this property MUST be 'x-oca-playbook'.",
+                    "enum": ["x-oca-playbook"]
+                },
+                "id": {
+                    "type": "string",
+                    "pattern": "^x-oca-playbook--"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name used to identify the playbook."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An explanation, details, and more context about what this playbook does and tries to accomplish."
+                },
+                "playbook_id": {
+                    "type": "string",
+                    "description": "A value that identifies the playbook. \n\nIf the playbook (itself) includes an identifier, then 'playbook_id' SHOULD use the same identifier for correlation purposes. It is recommended to use either UUIDv4 or deterministic UUIDv5 identifiers — if supported."
+                },
+                "playbook_creator": {
+                    "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/identifier.json",
+                    "description": "The identifier of SDO identity that created the playbook. \n\nIf this object references a CACAO v2.0 playbook, then the value of this property SHOULD match the value of the created_by property in the CACAO playbook."
+                },
+                "playbook_creation_time": {
+                    "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json",
+                    "description": "The time at which the playbook was originally created. \n\nIf this object references a CACAO v2.0 playbook, then the value of this property SHOULD match the value of the created property in the CACAO playbook."
+                },
+                "playbook_modification_time": {
+                    "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json",
+                    "description": "The time at which the playbook was last modified. \n\nIf this object references a CACAO v2.0 playbook, then the value of this property SHOULD match the value of the modified property in the CACAO playbook."
+                },
+                "organization_type": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1,
+                    "description": "The type of organization that the playbook is intended for. \n\nThe value for this property SHOULD come from the 'industry-sector-ov' open vocabulary as defined in [STIX-v2.1]. If this object references a CACAO v2.0 playbook, then the value of this property SHOULD match the value of the (if populated) industry_sectors property in the CACAO playbook. \n\nNote that the [CACAO-Security-Playbooks-v2.0] extends the 'industry-sector-ov' of [STIX-v2.1] with more sectors."
+                },
+                "playbook_format": {
+                    "type": "string",
+                    "description": "The standard / format / notation the playbook conforms to (e.g., cacao, bpmn, ansible), or when not available, its encoding (e.g., .png or .pptx). \n\nWhen possible, this value SHOULD come from the values defined in the Template column of the IANA media type registry [Media Types]. For example, if a playbook is provided as an image in png format, the value following the IANA media type registry should be 'image/png'. Another example is CACAO security playbooks, where in [CACAO-Security-Playbooks-v2.0] Appendix C. IANA Considerations, the following media type is defined: 'application/cacao+json'."
+                },
+                "is_playbook_template": {
+                    "type": "boolean",
+                    "description": "This property verifies whether the playbook is a template or includes details for machine execution. \n\nA playbook could abstractly define and describe a structured process to be performed by cybersecurity personnel following up on a specific incident type or could detail actions up to the command level for an orchestrator to consume and execute it automatically by integrating and interacting with a set of systems and system components. Generally, playbooks for exchange will be vetted for confidential information and infrastructure details. Organizations and sharing parties and communities MAY define rules for what exactly constitutes a template playbook."
+                },
+                "playbook_type": {
+                    "type": "array",
+                    "description": "A list of playbook types that specifies the operational roles this playbook addresses. \n\nThe value for this property SHOULD come from the playbook-type-ov open vocabulary. If this object references a CACAO v2.0 playbook, then the value of this property SHOULD match the value of the (if populated) playbook_types property in the CACAO playbook.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1
+                },
+                "playbook_impact": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "A number (𝕎 - whole number) from 0 to 100 that represents the potential impact (as determined subjectively by the producer) the execution of the playbook might have on the organization and its infrastructure.\n\nOrganizations and sharing parties and communities MAY establish clear rules for assigning this property. \n\nIf specified, the value of this property MUST be between 0 and 100. When left blank, this means unspecified. A value of 0 means specifically undefined or benign. Impact values range from 1, the lowest impact, to a value of 100, the highest. \n\nNote that CACAO v2.0 playbooks also share the same property (impact) but producers of this SDO MAY assign different impact values based on their own rules."
+                },
+                "playbook_severity": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "A number (𝕎 - whole number) that represents the seriousness of the conditions that this playbook addresses. This is highly dependent on whether the playbook is a response to an incident (in which case the severity could be mapped to an incident category defined in some solution), a response to a threat (in which case the severity would likely be mapped to the severity of the threat faced or captured by threat intelligence), or a response to something else. \n\nOrganizations and sharing parties and communities MAY establish clear rules for assigning this property. \n\nIf specified, the value of this property MUST be between 0 and 100. \n\nWhen left blank, this means unspecified. A value of 0 means specifically undefined. Values range from 1, the lowest severity, to 100, the highest. \n\nNote that CACAO v2.0 playbooks also share the same property (severity) but producers of this SDO MAY assign different impact values based on their own rules."
+                },
+                "playbook_priority": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "A number (𝕎 - whole number) that represents the priority of this playbook relative to other defined playbooks. \n\nPriority in this context is a subjective assessment; thus, organizations, and sharing parties and communities of playbooks MAY define rules on how priority should be assessed and assigned. This specification does not address how this assessment is determined. This property is primarily to allow such usage without requiring the addition of a custom property for such practices. This property can support different use cases and requirements of a producing or consuming entity. For example, two playbook objects focused on the same malware could use the priority property to indicate that the execution of a remediation playbook is preferred compared to a mitigation playbook. \n\nIf specified, the value of this property MUST be between 0 and 100. \n\nWhen left blank this means unspecified. A value of 0 means specifically undefined. Values range from 1, the highest priority, to a value of 100, the lowest. \n\nThe values of 1-100 in this property are inverted from playbook_severity and playbook_impact based on how the concept of priority is used today. For example, in a SOC a P1 ticket is a higher priority than a P4 ticket. \n\nNote that CACAO playbooks also share the same property (priority) but producers of this SDO MAY assign different impact values based on their own rules."
+                },
+                "playbook_bin": {
+                    "type": "string",
+                    "description": "The entire playbook encoded in base64. \n\nThis property allows sharing and retrieving entire playbooks. \n\nThis property MUST NOT be present if the playbook_url property is populated. \n\nAs playbooks can become quite large, implementers MAY decide to use the playbook_url property to support lightweight message exchange."
+                },
+                "playbook_url": {
+                    "type": "string",
+                    "description": "The value of this property MUST be a valid URL that resolves to a non-encoded playbook (playbook in its native format). \n\nThis property MUST NOT be present if the playbook_bin property is populated."
+                },
+                "playbook_hashes": {
+                    "type": "hashes",
+                    "description": "Specifies a dictionary of hashes for the playbook itself. The hashes MUST be calculated by using the playbook in its native format. \n\nThis property can be used to ensure the integrity of the playbook retrieved from the playbook_url property. \n\nThis property MUST be present when the playbook_url property is present. \n\nDictionary keys MUST come from the hash-algorithm-ov open vocabulary."
+                }
+            }
+        }
+    ],
+    "required": ["name", "is_playbook_template"],
+    "if": {
+        "properties": { "playbook_bin": { "type": "string" } }
+    },
+    "then": {
+        "not": { "required": ["playbook_url"] }
+    }
+  }

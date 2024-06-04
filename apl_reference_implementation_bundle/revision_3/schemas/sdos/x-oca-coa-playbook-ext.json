@@ -1,0 +1,44 @@
+{
+    "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-coa-playbook-ext.json",
+    "$schema": "http://json-schema.org/draft/2020-12/schema#",
+    "title": "x-oca-coa-playbook-ext",
+    "description": "A property extension for the Course of Action SDO for sharing automated courses of action (i.e., orchestration workflows or playbooks).",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/sdos/course-of-action.json"
+        },
+        {
+            "properties": {
+                "extensions": {
+                    "type": "object",
+                    "properties": {
+                        "extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd": {
+                            "type": "object",
+                            "properties": {
+                                "extension_type": {
+                                    "type": "string",
+                                    "description": "The value of this property MUST be 'property-extension'.",
+                                    "enum": ["property-extension"]
+                                },
+                                "playbooks": {
+                                    "type": "object",
+                                    "description": "The dictionary key is the UUID of a STIX 2.1 playbook object. The dictionary value is the playbook format (e.g., application/cacao+json, bpmn).\n\n When possible, this value SHOULD come from the values defined in the Template column of the IANA media type registry [Media Types]. For example, if a playbook is provided as an image in png format, the value following the IANA media type registry MUST be 'image/png'. Another example is CACAO security playbooks, where in [CACAO-Security-Playbooks-v2.0] Appendix C. IANA Considerations, the following media type is defined: 'application/cacao+json'",
+                                    "minProperties": 1,
+                                    "patternProperties": {
+                                        "^x-oca-playbook--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "required": ["extension_type"]
+                        }
+                    },
+                    "required": ["extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd"]
+                }
+            }
+        }
+    ],
+    "required": ["extensions"]
+  }

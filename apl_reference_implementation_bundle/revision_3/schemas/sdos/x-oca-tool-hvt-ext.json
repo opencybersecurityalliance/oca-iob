@@ -1,0 +1,91 @@
+{
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-tool-hvt-ext.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "x-oca-tool-hvt-ext",
+  "description": "Tools are legitimate software that can be used by threat actors to perform attacks.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/sdos/tool.json"
+    },
+    {
+      "properties": {
+        "extensions": {
+          "type": "object",
+          "properties": {
+            "extension-definition--fb58a27d-32d2-4b8d-9705-e3cfd2d3dcdf": {
+              "type": "object",
+              "properties": {
+                "extension_type": {
+                  "type": "string",
+                  "description": "extension_type, which MUST be the literal `property-extension`.",
+                  "enum": [
+                    "property-extension"
+                  ]
+                },
+                "high_value_target_attributes": {
+                  "type": "array",
+                  "description": "Array of High Value Target attributes. Elements SHOULD come from the open vocab high-value-target-attribute-ov.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                },
+                "required": [
+                  "extension_type"
+                ]
+              }
+            },
+            "required": [
+              "extension-definition--fb58a27d-32d2-4b8d-9705-e3cfd2d3dcdf"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "extensions"
+  ],
+  "definitions": {
+    "tool-type-ov": {
+      "type": "string",
+      "enum": [
+        "denial-of-service",
+        "exploitation",
+        "information-gathering",
+        "network-capture",
+        "credential-exploitation",
+        "remote-access",
+        "vulnerability-scanning",
+        "unknown",
+        "hypervisors-virtualization",
+        "identity-access-management",
+        "security-monitoring",
+        "backup-storage",
+        "endpoint-management",
+        "endpoint-security",
+        "network-management",
+        "network-security",
+        "office-productivity",
+        "crisis-management",
+        "business-data-repository"
+      ]
+    },
+    "high-value-target-attribute-ov": {
+      "type": "string",
+      "enum": [
+        "tamper-prone",
+        "internal-prospecting",
+        "stores-secrets",
+        "stealthiness",
+        "external-exposure",
+        "infiltrate-comms",
+        "blindside-defense",
+        "inhibit-restoration",
+        "stores-data",
+        "widespread-presence"
+      ]
+    }
+  }
+}
