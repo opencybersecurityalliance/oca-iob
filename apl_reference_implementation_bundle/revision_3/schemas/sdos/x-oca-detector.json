@@ -1,7 +1,7 @@
 {
-  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/detector.json",
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-detector.json",
   "$schema": "http://json-schema.org/draft/2020-12/schema#",
-  "title": "detector",
+  "title": "x-oca-detector",
   "description": "Detector objects define tools, software, products, etc. that are capable of performing detection. They should likely be related to one or more Detection obects.",
   "type": "object",
   "allOf": [
@@ -92,4 +92,3 @@
     "name"
   ]
 }
-

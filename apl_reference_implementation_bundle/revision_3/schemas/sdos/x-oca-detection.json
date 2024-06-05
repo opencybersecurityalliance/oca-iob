@@ -1,7 +1,7 @@
 {
-  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/detection.json",
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-detection.json",
   "$schema": "http://json-schema.org/draft/2020-12/schema#",
-  "title": "detection",
+  "title": "x-oca-detection",
   "description": "Detections contain logic to detect an adversary behavior.",
   "type": "object",
   "allOf": [

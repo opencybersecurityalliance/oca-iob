@@ -1,7 +1,7 @@
 {
-  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/oca-iob/main/apl_reference_implementation_bundle/revision_2/schemas/sdos/behavior.json",
+  "$id": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-behavior.json",
   "$schema": "http://json-schema.org/draft/2020-12/schema#",
-  "title": "behavior",
+  "title": "x-oca-behavior",
   "description": "Behavior objects define adversary behaviors associated with higher level MITRE ATT&CK tactics and techniques. The Attack Pattern SDO may have multiple behaviors associated with it. For example, a spearphishing attack may employ multiple behaviors (usage of email attachments, process modifying a registry key, network patterns, etc.).",
   "type": "object",
   "allOf": [
