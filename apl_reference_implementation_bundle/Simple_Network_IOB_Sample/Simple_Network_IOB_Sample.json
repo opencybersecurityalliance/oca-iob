@@ -1,0 +1,538 @@
+{
+  "id": "bundle--abb6ac2d-18f4-40c6-914c-f02b34d7e2b9",
+  "type": "bundle",
+  "objects": [
+    {
+      "id": "x-oca-detector--f9ccdd3d-2217-45fd-8e65-055da8e66c3e",
+      "type": "x-oca-detector",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2023-05-01T12:00:00.000Z",
+      "modified": "2023-05-01T12:00:00.000Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "Sigma",
+      "description": "A generic signature format for log files.",
+      "cpe": "cpe:2.3:a:sigmahq:sigma:0.21:*:*:*:*:*:*:*",
+      "valid_until": "2027-05-01T12:00:00.000Z",
+      "vendor": "SigmaHQ",
+      "vendor_url": "https://github.com/SigmaHQ",
+      "product": "Sigma",
+      "product_url": "https://github.com/SigmaHQ/sigma",
+      "detection_types": [
+        "log"
+      ],
+      "detector_data_categories": [
+        "log"
+      ],
+      "detector_data_sources": [
+        "windows event log",
+        "sysmon",
+        "zeek",
+        "rita",
+        "argus"
+      ],
+      "extensions": {
+        "extension-definition--5cccba5c-0be4-450c-8672-b66e98515754": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "id": "x-oca-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd",
+      "type": "x-oca-behavior",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2022-03-31T13:00:00.000Z",
+      "modified": "2022-03-31T13:00:00.000Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "Secondary Payload Privilege Escalation Behavior",
+      "description": "A privilege escalation has occurred which may indicate adversary activity.",
+      "behavior_class": "anomalous",
+      "tactic": "Privilege Escalation",
+      "technique": "T1134.001 - Access token manipulation - Token impersonation",
+      "first_seen": "2022-03-31T13:00:00.000Z",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "id": "x-oca-detection--f27cb358-d747-47ba-a6c4-e5b8debab157",
+      "type": "x-oca-detection",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2022-03-31T13:00:00.000Z",
+      "modified": "2022-03-31T13:00:00.000Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "Secondary Payload Privilege Escalation Detection",
+      "data_sources": [
+        {
+          "data_type": "WinEventLog",
+          "LogName": "Security",
+          "EventCode": "4688",
+          "TaskCategory": "Process Creation",
+          "Message": "A new process has been created.\r\n\r\nCreator Subject:\r\n\tSecurity ID:\t\tS-1-5-21-3073171905-3635715100-2267507973-1219\r\n\tAccount Name:\t\tjsmith\r\n\tAccount Domain:\t\tCBIS\r\n\tLogon ID:\t\t0x502695\r\n\r\nTarget Subject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tSP25-TARGET$\r\n\tAccount Domain:\t\tCBIS\r\n\tLogon ID:\t\t0x3E7\r\n\r\nProcess Information:\r\n\tNew Process ID:\t\t0x27584\r\n\tNew Process Name:\tC:\\Users\\jsmith.CBIS\\AppData\\Local\\beacon.exe\r\n\tToken Elevation Type:\t%%1936\r\n\tMandatory Label:\t\tS-1-16-16384\r\n\tCreator Process ID:\t0x26b70\r\n\tCreator Process Name:\tC:\\Users\\jsmith\\AppData\\Local\\PrintSpoofer64.exe\r\n\tProcess Command Line:\tC:\\Users\\jsmith.CBIS\\Appdata\\local\\Beacon.exe\r\n\r\nToken Elevation Type indicates the type of token that was assigned to the new process in accordance with User Account Control policy.\r\n\r\nType 1 is a full token with no privileges removed or groups disabled.  A full token is only used if User Account Control is disabled or if the user is the built-in Administrator account or a service account.\r\n\r\nType 2 is an elevated token with no privileges removed or groups disabled.  An elevated token is used when User Account Control is enabled and the user chooses to start the program using Run as administrator.  An elevated token is also used when an application is configured to always require administrative privilege or to always require maximum privilege, and the user is a member of the Administrators group.\r\n\r\nType 3 is a limited token with administrative privileges removed and administrative groups disabled.  The limited token is used when User Account Control is enabled, the application does not require administrative privilege, and the user does not choose to start the program using Run as administrator."
+        }
+      ],
+      "analytic": {
+        "type": "Sigma Rule",
+        "rule": "LS0tCmF1dGhvcjogZGVtbwpkYXRlOiAyMDIyLzAzLzA0CmRlc2NyaXB0aW9uOiBEZXRlY3RzIGxvY2FsIHVzZXIgc3Bhd25pbmcgYSBwcm9jZXNzIGFzIFNZU1RFTQpkZXRlY3Rpb246CiAgY29uZGl0aW9uOiBzZWxlY3Rpb24xIGFuZCBub3Qgc2VsZWN0aW9uMgogIHNlbGVjdGlvbjE6CiAgICB1c2VyfGNvbnRhaW5zOiAiJCIKICAgIEV2ZW50Q29kZTogNDY4OAogIHNlbGVjdGlvbjI6CiAgICBzcmNfdXNlcnxjb250YWluczogIiQiCmZhbHNlcG9zaXRpdmVzOgogIC0gTG93CmlkOiB1c2VydG9zeXN0ZW1wcm9jcHJpdmVzYwpsZXZlbDogaGlnaApsb2dzb3VyY2U6CiAgY2F0ZWdvcnk6IHByb2Nlc3NfZXZlbnQKICBpbmRleDogbWFpbgogIHByb2R1Y3Q6IHdpbmRvd3MKc3RhdHVzOiBleHBlcmltZW50YWwKdGFnczoKICAtIGF0dGFjay5wcml2aWxlZ2UtZXNjYWxhdGlvbgogIC0gYXR0YWNrLlQxMTM0LjAwMQp0aXRsZTogdXNlciB0byBzeXN0ZW0gcHJvY2VzcyBwcml2aWxlZ2UgZXNjYWxhdGlvbg=="
+      },
+      "extensions": {
+        "extension-definition--c4690e13-107e-4796-8158-0dcf1ae7bc89": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "id": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "type": "identity",
+      "spec_version": "2.1",
+      "created": "2022-03-31T13:00:00.000Z",
+      "modified": "2023-05-23T10:09:00.000Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "OCA"
+    },
+    {
+      "id": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+      "type": "identity",
+      "spec_version": "2.1",
+      "created": "2017-06-01T00:00:00.000Z",
+      "modified": "2022-04-25T14:00:00.188Z",
+      "revoked": false,
+      "lang": "en",
+      "object_marking_refs": [
+        "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+      ],
+      "name": "The MITRE Corporation",
+      "identity_class": "organization"
+    },
+    {
+      "id": "attack-pattern--86850eff-2729-40c3-b85e-c4af26da4a2d",
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+      "created": "2020-02-18T16:39:06.289Z",
+      "modified": "2024-01-10T17:57:36.177Z",
+      "revoked": false,
+      "lang": "en",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "url": "https://attack.mitre.org/techniques/T1134/001",
+          "external_id": "T1134.001"
+        },
+        {
+          "source_name": "Microsoft Command-line Logging",
+          "description": "Mathers, B. (2017, March 7). Command line process auditing. Retrieved April 21, 2017.",
+          "url": "https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-ds/manage/component-updates/command-line-process-auditing"
+        },
+        {
+          "source_name": "DuplicateToken function",
+          "description": "Microsoft. (2021, October 12). DuplicateToken function (securitybaseapi.h). Retrieved January 8, 2024.",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/api/securitybaseapi/nf-securitybaseapi-duplicatetoken"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+      ],
+      "name": "Token Impersonation/Theft",
+      "description": "Adversaries may duplicate then impersonate another user's existing token to escalate privileges and bypass access controls. For example, an adversary can duplicate an existing token using `DuplicateToken` or `DuplicateTokenEx`.(Citation: DuplicateToken function) The token can then be used with `ImpersonateLoggedOnUser` to allow the calling thread to impersonate a logged on user's security context, or with `SetThreadToken` to assign the impersonated token to a thread.\n\nAn adversary may perform [Token Impersonation/Theft](https://attack.mitre.org/techniques/T1134/001) when they have a specific, existing process they want to assign the duplicated token to. For example, this may be useful for when the target user has a non-network logon session on the system.\n\nWhen an adversary would instead use a duplicated token to create a new process rather than attaching to an existing process, they can additionally [Create Process with Token](https://attack.mitre.org/techniques/T1134/002) using `CreateProcessWithTokenW` or `CreateProcessAsUserW`. [Token Impersonation/Theft](https://attack.mitre.org/techniques/T1134/001) is also distinct from [Make and Impersonate Token](https://attack.mitre.org/techniques/T1134/003) in that it refers to duplicating an existing token, rather than creating a new one.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "defense-evasion"
+        },
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "privilege-escalation"
+        }
+      ]
+    },
+    {
+      "id": "attack-pattern--92d7da27-2d91-488e-a00c-059dc162766d",
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+      "created": "2017-05-31T21:30:41.804Z",
+      "modified": "2023-05-09T14:00:00.188Z",
+      "revoked": false,
+      "lang": "en",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "url": "https://attack.mitre.org/techniques/T1041",
+          "external_id": "T1041"
+        },
+        {
+          "source_name": "University of Birmingham C2",
+          "description": "Gardiner, J.,  Cova, M., Nagaraja, S. (2014, February). Command & Control Understanding, Denying and Detecting. Retrieved April 20, 2016.",
+          "url": "https://arxiv.org/ftp/arxiv/papers/1408/1408.1136.pdf"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+      ],
+      "name": "Exfiltration Over C2 Channel",
+      "description": "Adversaries may steal data by exfiltrating it over an existing command and control channel. Stolen data is encoded into the normal communications channel using the same protocol as command and control communications.",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "exfiltration"
+        }
+      ]
+    },
+    {
+      "id": "x-oca-detector--79871c80-7cad-4e7c-8f59-84e2c5c2f125",
+      "type": "x-oca-detector",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2024-09-04T10:13:52.440Z",
+      "modified": "2024-09-04T10:13:52.440Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "Argus",
+      "description": "Network Audit Record Generation and Usage System",
+      "cpe": "cpe:2.3:a:openargus:argus:5.0:*:*:*:*:*:*:*",
+      "valid_until": "2029-09-04T06:13:52.000Z",
+      "vendor": "Qosient, LLC",
+      "vendor_url": "https://www.qosient.com",
+      "product": "Argus",
+      "product_url": "https://openargus.org",
+      "detection_types": [
+        "network"
+      ],
+      "detector_data_categories": [
+        "network"
+      ],
+      "detector_data_sources": [
+        "pcap"
+      ],
+      "extensions": {
+        "extension-definition--5cccba5c-0be4-450c-8672-b66e98515754": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "id": "x-oca-behavior--b097fbbf-4f97-4f95-9a6f-02e2de7839c7",
+      "type": "x-oca-behavior",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2024-09-04T10:13:52.436Z",
+      "modified": "2024-09-04T10:13:52.436Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "Abnormal increase in outbound Traffic",
+      "description": "A system (Internal IP address)  has significantly increased the amount of outbound network traffic as compared to its daily average",
+      "behavior_class": "anomalous",
+      "tactic": "Exfiltration",
+      "technique": "T1041 Exfiltration Over C2 Channel",
+      "first_seen": "2024-09-04T10:13:52.436Z",
+      "platforms": [
+        {
+          "operating_system": "Microsoft Windows",
+          "version": "10"
+        }
+      ],
+      "extensions": {
+        "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "id": "x-oca-detection--c773d764-4451-463f-97c7-ed01bcb3a2b9",
+      "type": "x-oca-detection",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2024-09-04T10:28:42.795Z",
+      "modified": "2024-09-04T10:28:42.795Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "Argus Detection of Increased Outbound Traffic",
+      "data_sources": [
+        {
+          "LogName": "Argus-Behave"
+        }
+      ],
+      "analytic": {
+        "type": "Sigma Rule",
+        "rule": "LS0tCmRhdGU6IDIwMjQvMDkvMDQKdGl0bGU6IEFyZ3VzIGluY3JlYXNlIGluIERlc3RpbmF0aW9uIEJ5dGVzIGZyb20gSVAgYWRkcmVzcwppZDogNDVCRjc1NUItNzk1MC00RjM5LTg1QUUtRDU2MzU5MTZGQ0U5CnN0YXR1czogZXhwZXJpbWVudGFsCmRlc2NyaXB0aW9uOiBEZXRlY3Rpb24gb2YgYWJub3JtYWwgaW5jcmVhc2UgaW4gZGVzdGluYXRpb24gYnl0ZXMgZnJvbSBhbiBpbnRlcm5hbCBJUCBhZGRyZXNzCnRhZ3M6CiAgLSBhdHRhY2suZXhmaWx0cmF0aW9uCiAgLSBhdHRhY2sudDEwNDEKYXV0aG9yOiBkZW1vCmxvZ3NvdXJjZToKICBwcm9kdWN0OiBhcmd1cwogIGluZGV4OiBtYWluCiAgY2F0ZWdvcnk6IGFsYXJtcwpkZXRlY3Rpb246CiAgc2VsZWN0aW9uOgogICAgc291cmNlOiBBcmd1cy1CZWhhdmUKICAgIHpzY29yZXxndDogMjAKICAgIG9iamVjdDogRGJ5dGVzCiAgICBzZWFyY2h8c3RhcnRzd2l0aDogIjE5Mi4xNjguIgogIGNvbmRpdGlvbjogc2VsZWN0aW9uCmZhbHNlcG9zaXRpdmVzOgogIC0gVW5rbm93bgpsZXZlbDogbWVkaXVt"
+      },
+      "extensions": {
+        "extension-definition--c4690e13-107e-4796-8158-0dcf1ae7bc89": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "source_ref": "x-oca-detection--f27cb358-d747-47ba-a6c4-e5b8debab157",
+      "target_ref": "x-oca-detector--f9ccdd3d-2217-45fd-8e65-055da8e66c3e",
+      "relationship_type": "uses",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:16:01.081Z",
+      "modified": "2024-09-04T10:16:01.081Z",
+      "id": "relationship--fc7c35a9-b341-409f-af57-69abf15642f4"
+    },
+    {
+      "source_ref": "x-oca-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd",
+      "target_ref": "attack-pattern--86850eff-2729-40c3-b85e-c4af26da4a2d",
+      "relationship_type": "uses",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:16:12.004Z",
+      "modified": "2024-09-04T10:16:12.004Z",
+      "id": "relationship--9d29d1ca-4093-41bb-bb0c-7fa2808c78fe"
+    },
+    {
+      "source_ref": "x-oca-detection--f27cb358-d747-47ba-a6c4-e5b8debab157",
+      "target_ref": "x-oca-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd",
+      "relationship_type": "detects",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:16:23.396Z",
+      "modified": "2024-09-04T10:16:23.396Z",
+      "id": "relationship--2c608c52-bbc8-471c-abae-cf32705e20e0"
+    },
+    {
+      "source_ref": "x-oca-behavior--b097fbbf-4f97-4f95-9a6f-02e2de7839c7",
+      "target_ref": "attack-pattern--92d7da27-2d91-488e-a00c-059dc162766d",
+      "relationship_type": "uses",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:26:29.868Z",
+      "modified": "2024-09-04T10:26:29.868Z",
+      "id": "relationship--f7797ef3-0471-42c1-aa96-a8443869cdac"
+    },
+    {
+      "source_ref": "x-oca-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd",
+      "target_ref": "x-oca-behavior--b097fbbf-4f97-4f95-9a6f-02e2de7839c7",
+      "relationship_type": "occurs-before",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:31:37.073Z",
+      "modified": "2024-09-04T10:31:37.073Z",
+      "id": "relationship--42d5a891-d17c-4081-9f82-c23f165489b3"
+    },
+    {
+      "source_ref": "x-oca-detection--c773d764-4451-463f-97c7-ed01bcb3a2b9",
+      "target_ref": "x-oca-behavior--b097fbbf-4f97-4f95-9a6f-02e2de7839c7",
+      "relationship_type": "detects",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:50:07.442Z",
+      "modified": "2024-09-04T10:50:07.443Z",
+      "id": "relationship--6f313b99-c8a0-4b8b-ab49-ee77b4838dbb"
+    },
+    {
+      "source_ref": "x-oca-detection--c773d764-4451-463f-97c7-ed01bcb3a2b9",
+      "target_ref": "x-oca-detector--f9ccdd3d-2217-45fd-8e65-055da8e66c3e",
+      "relationship_type": "uses",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:56:52.873Z",
+      "modified": "2024-09-04T10:56:52.874Z",
+      "id": "relationship--260ab876-518e-4572-98a1-5b01f517b2a1"
+    },
+    {
+      "source_ref": "x-oca-detection--c773d764-4451-463f-97c7-ed01bcb3a2b9",
+      "target_ref": "x-oca-detector--79871c80-7cad-4e7c-8f59-84e2c5c2f125",
+      "relationship_type": "uses",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:56:58.358Z",
+      "modified": "2024-09-04T10:56:58.358Z",
+      "id": "relationship--8d1e7882-3141-4a2c-bf62-2026558c3841"
+    },
+    {
+      "id": "course-of-action--bf0ef2e4-185d-4d33-9359-bc41adddd518",
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2024-09-04T10:53:27.335Z",
+      "modified": "2024-09-04T10:53:27.335Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "Correlate Alerts",
+      "description": "Correlation of emergent network activity and privilege escalation",
+      "extensions": {
+        "extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd": {
+          "extension_type": "property-extension",
+          "playbooks": {
+            "x-oca-playbook--67352a79-99a7-4dfe-a610-1a248f9182ce": "application/cacao+json"
+          }
+        }
+      }
+    },
+    {
+      "source_ref": "x-oca-detection--f27cb358-d747-47ba-a6c4-e5b8debab157",
+      "target_ref": "course-of-action--bf0ef2e4-185d-4d33-9359-bc41adddd518",
+      "relationship_type": "triggers",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:59:19.808Z",
+      "modified": "2024-09-04T10:59:19.809Z",
+      "id": "relationship--724ca2bd-450d-467b-97ae-a335e89d7910"
+    },
+    {
+      "source_ref": "x-oca-detection--c773d764-4451-463f-97c7-ed01bcb3a2b9",
+      "target_ref": "course-of-action--bf0ef2e4-185d-4d33-9359-bc41adddd518",
+      "relationship_type": "triggers",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T10:59:22.846Z",
+      "modified": "2024-09-04T10:59:22.846Z",
+      "id": "relationship--69e3a04f-1ae5-4b8b-8afb-ee8ee072c36b"
+    },
+    {
+      "id": "x-oca-playbook--67352a79-99a7-4dfe-a610-1a248f9182ce",
+      "type": "x-oca-playbook",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2024-09-04T10:54:59.920Z",
+      "modified": "2024-09-04T10:54:59.920Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "Correlation of Network and System Alerts",
+      "playbook_id": "playbook--893d0f0e-e546-4d7d-b33e-722ce4dbce2d",
+      "playbook_creator": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "playbook_creation_time": "2024-09-04T10:54:59.920Z",
+      "playbook_modification_time": "2024-09-04T10:54:59.920Z",
+      "playbook_format": "CACAO",
+      "is_playbook_template": true,
+      "playbook_type": [
+        "detection"
+      ],
+      "playbook_bin": "ewogICJ0eXBlIjogInBsYXlib29rIiwKICAic3BlY192ZXJzaW9uIjogImNhY2FvLTIuMCIsCiAgImlkIjogInBsYXlib29rLS03M2M2Y2Y1OC1mYjI1LTQ3YjgtYTAzYy04NzAyM2ZhYTAwM2QiLAogICJuYW1lIjogIlNpbXBsZSBOZXR3b3JrIC0gRW5kcG9pbnQgQ29ycmVsYXRpb24iLAogICJkZXNjcmlwdGlvbiI6ICJTaW1wbGUgTmV0d29yayBhbmQgRW5kcG9pbnQgQ29ycmVsYXRpb24gV29ya2Zsb3ciLAogICJjcmVhdGVkX2J5IjogImlkZW50aXR5LS1iYzFmMDNkOS1hYTQ3LTRmMzQtYWY0MC05MTI0ZjRiYmI4NjMiLAogICJjcmVhdGVkIjogIjIwMjQtMDktMDRUMTY6Mzc6NDUuOTE4WiIsCiAgIm1vZGlmaWVkIjogIjIwMjQtMDktMDRUMTY6Mzc6NDUuOTE4WiIsCiAgInJldm9rZWQiOiBmYWxzZSwKICAiZGVyaXZlZF9mcm9tIjogWwogICAgInBsYXlib29rLS1mYzM3YTQ5Mi03M2E1LTQ5YWUtOGE3Yy1kNDlkMzQxODUyZDQiCiAgXSwKICAid29ya2Zsb3dfc3RhcnQiOiAic3RhcnQtLTYzZmI3Yzg1LTNhN2UtNDFjNy05NjliLTM5ZGNhN2U2MmY3MCIsCiAgIndvcmtmbG93IjogewogICAgInN0YXJ0LS02M2ZiN2M4NS0zYTdlLTQxYzctOTY5Yi0zOWRjYTdlNjJmNzAiOiB7CiAgICAgICJvbl9jb21wbGV0aW9uIjogInBhcmFsbGVsLS1mNzBmN2UyZS05ZWY4LTQzYjMtYmFkOS1mZWYzNDgzM2EyZTkiLAogICAgICAic3RlcF9leHRlbnNpb25zIjogewogICAgICAgICJleHRlbnNpb24tZGVmaW5pdGlvbi0tNDE4ZWUyNGMtOWNiMS00NmQ5LWFmYTUtMzA5ZTAxYWFiYzdmIjogewogICAgICAgICAgInR5cGUiOiAiY29vcmRpbmF0ZXMiLAogICAgICAgICAgIngiOiAzMjAsCiAgICAgICAgICAieSI6IDM3MCwKICAgICAgICAgICJ3aWR0aCI6IDYwLAogICAgICAgICAgImhlaWdodCI6IDQwLAogICAgICAgICAgIm91dGdvaW5nX2Nvbm5lY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAib24tY29tcGxldGlvbiIsCiAgICAgICAgICAgICAgIngiOiBbCiAgICAgICAgICAgICAgICAzODAsCiAgICAgICAgICAgICAgICA0MjAKICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICJ5IjogWwogICAgICAgICAgICAgICAgMzkwLAogICAgICAgICAgICAgICAgMzkwCiAgICAgICAgICAgICAgXQogICAgICAgICAgICB9CiAgICAgICAgICBdCiAgICAgICAgfQogICAgICB9LAogICAgICAidHlwZSI6ICJzdGFydCIKICAgIH0sCiAgICAicGFyYWxsZWwtLWY3MGY3ZTJlLTllZjgtNDNiMy1iYWQ5LWZlZjM0ODMzYTJlOSI6IHsKICAgICAgIm5hbWUiOiAiQ2hlY2sgQWxlcnRzIiwKICAgICAgInN0ZXBfZXh0ZW5zaW9ucyI6IHsKICAgICAgICAiZXh0ZW5zaW9uLWRlZmluaXRpb24tLTQxOGVlMjRjLTljYjEtNDZkOS1hZmE1LTMwOWUwMWFhYmM3ZiI6IHsKICAgICAgICAgICJ0eXBlIjogImNvb3JkaW5hdGVzIiwKICAgICAgICAgICJ4IjogNDIwLAogICAgICAgICAgInkiOiAzNjAsCiAgICAgICAgICAid2lkdGgiOiAxMjAsCiAgICAgICAgICAiaGVpZ2h0IjogNjAsCiAgICAgICAgICAib3V0Z29pbmdfY29ubmVjdGlvbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidHlwZSI6ICJuZXh0LXN0ZXBzIiwKICAgICAgICAgICAgICAieCI6IFsKICAgICAgICAgICAgICAgIDQ4MCwKICAgICAgICAgICAgICAgIDQ4MAogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgInkiOiBbCiAgICAgICAgICAgICAgICA0MjAsCiAgICAgICAgICAgICAgICA0NzAKICAgICAgICAgICAgICBdCiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICB9CiAgICAgIH0sCiAgICAgICJ0eXBlIjogInBhcmFsbGVsIiwKICAgICAgIm5leHRfc3RlcHMiOiBbCiAgICAgICAgImFjdGlvbi0tZWQxYmRkMmEtYjEzOC00YjE3LTlhODItMzE2ZmM2ODJiZGQwIiwKICAgICAgICAiYWN0aW9uLS04NjUzNjYyNS0yNDcyLTQzNzMtOWU1MC1kZjExOTAwNzBhYjYiCiAgICAgIF0KICAgIH0sCiAgICAiYWN0aW9uLS1lZDFiZGQyYS1iMTM4LTRiMTctOWE4Mi0zMTZmYzY4MmJkZDAiOiB7CiAgICAgICJuYW1lIjogIkdhdGhlciBQcml2aWxlZ2UgRXNjYWxhdGlvbiBBbGVydCBGaWVsZHMiLAogICAgICAib25fY29tcGxldGlvbiI6ICJpZi1jb25kaXRpb24tLTNjNjBlMTIyLTY3YmItNDFkMi04OWExLTZkMDM2YzQ1YzIxZCIsCiAgICAgICJzdGVwX2V4dGVuc2lvbnMiOiB7CiAgICAgICAgImV4dGVuc2lvbi1kZWZpbml0aW9uLS00MThlZTI0Yy05Y2IxLTQ2ZDktYWZhNS0zMDllMDFhYWJjN2YiOiB7CiAgICAgICAgICAidHlwZSI6ICJjb29yZGluYXRlcyIsCiAgICAgICAgICAieCI6IDQwNSwKICAgICAgICAgICJ5IjogMjQwLAogICAgICAgICAgIndpZHRoIjogMTUwLAogICAgICAgICAgImhlaWdodCI6IDYwLAogICAgICAgICAgIm91dGdvaW5nX2Nvbm5lY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAib24tY29tcGxldGlvbiIsCiAgICAgICAgICAgICAgIngiOiBbCiAgICAgICAgICAgICAgICA1NTUsCiAgICAgICAgICAgICAgICA2NTAKICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICJ5IjogWwogICAgICAgICAgICAgICAgMjcwLAogICAgICAgICAgICAgICAgMjcwCiAgICAgICAgICAgICAgXQogICAgICAgICAgICB9CiAgICAgICAgICBdCiAgICAgICAgfQogICAgICB9LAogICAgICAidHlwZSI6ICJhY3Rpb24iCiAgICB9LAogICAgImFjdGlvbi0tODY1MzY2MjUtMjQ3Mi00MzczLTllNTAtZGYxMTkwMDcwYWI2IjogewogICAgICAibmFtZSI6ICJHYXRoZXIgQWJub3JtYWwgTmV0d29yayBUcmFmZmljIEFsZXJ0IEZpZWxkcyIsCiAgICAgICJvbl9jb21wbGV0aW9uIjogImlmLWNvbmRpdGlvbi0tNTBkYTJkMjItOWI4Yy00ZjVlLWEzZjMtNTU3NjU1ZWE3N2Y1IiwKICAgICAgInN0ZXBfZXh0ZW5zaW9ucyI6IHsKICAgICAgICAiZXh0ZW5zaW9uLWRlZmluaXRpb24tLTQxOGVlMjRjLTljYjEtNDZkOS1hZmE1LTMwOWUwMWFhYmM3ZiI6IHsKICAgICAgICAgICJ0eXBlIjogImNvb3JkaW5hdGVzIiwKICAgICAgICAgICJ4IjogNDA1LAogICAgICAgICAgInkiOiA0NzAsCiAgICAgICAgICAid2lkdGgiOiAxNTAsCiAgICAgICAgICAiaGVpZ2h0IjogNjAsCiAgICAgICAgICAib3V0Z29pbmdfY29ubmVjdGlvbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidHlwZSI6ICJvbi1jb21wbGV0aW9uIiwKICAgICAgICAgICAgICAieCI6IFsKICAgICAgICAgICAgICAgIDU1NSwKICAgICAgICAgICAgICAgIDY1MAogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgInkiOiBbCiAgICAgICAgICAgICAgICA1MDAsCiAgICAgICAgICAgICAgICA1MDAKICAgICAgICAgICAgICBdCiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICB9CiAgICAgIH0sCiAgICAgICJ0eXBlIjogImFjdGlvbiIKICAgIH0sCiAgICAiaWYtY29uZGl0aW9uLS0zYzYwZTEyMi02N2JiLTQxZDItODlhMS02ZDAzNmM0NWMyMWQiOiB7CiAgICAgICJuYW1lIjogIldhcyBQcml2aWxlZ2UgRXNjYWxhdGlvbiBmcm9tIGEgTGVnaXRpbWF0ZSBTb3VyY2U/IiwKICAgICAgInN0ZXBfZXh0ZW5zaW9ucyI6IHsKICAgICAgICAiZXh0ZW5zaW9uLWRlZmluaXRpb24tLTQxOGVlMjRjLTljYjEtNDZkOS1hZmE1LTMwOWUwMWFhYmM3ZiI6IHsKICAgICAgICAgICJ0eXBlIjogImNvb3JkaW5hdGVzIiwKICAgICAgICAgICJ4IjogNjUwLAogICAgICAgICAgInkiOiAyNDAsCiAgICAgICAgICAid2lkdGgiOiAxMjAsCiAgICAgICAgICAiaGVpZ2h0IjogNjAsCiAgICAgICAgICAib3V0Z29pbmdfY29ubmVjdGlvbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidHlwZSI6ICJvbi1mYWxzZSIsCiAgICAgICAgICAgICAgIngiOiBbCiAgICAgICAgICAgICAgICA3NzAsCiAgICAgICAgICAgICAgICA4MjUKICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICJ5IjogWwogICAgICAgICAgICAgICAgMjcwLAogICAgICAgICAgICAgICAgMjcwCiAgICAgICAgICAgICAgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAib24tdHJ1ZSIsCiAgICAgICAgICAgICAgIngiOiBbCiAgICAgICAgICAgICAgICA3MTAsCiAgICAgICAgICAgICAgICA3MTAsCiAgICAgICAgICAgICAgICAxNjA1LAogICAgICAgICAgICAgICAgMTYwNQogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgInkiOiBbCiAgICAgICAgICAgICAgICAyNDAsCiAgICAgICAgICAgICAgICAxNzAsCiAgICAgICAgICAgICAgICAxNzAsCiAgICAgICAgICAgICAgICAzNjAKICAgICAgICAgICAgICBdCiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICB9CiAgICAgIH0sCiAgICAgICJ0eXBlIjogImlmLWNvbmRpdGlvbiIsCiAgICAgICJvbl90cnVlIjogImFjdGlvbi0tN2NiYzIzOWMtZWU0Mi00NWRjLTg3MTItYzBmMDU0MDhlOWE4IiwKICAgICAgIm9uX2ZhbHNlIjogImFjdGlvbi0tYmE4MWJkOGYtMTRhZi00ZmQyLWI2NDYtZjY3ZmE4MWRiOWNkIgogICAgfSwKICAgICJhY3Rpb24tLWJhODFiZDhmLTE0YWYtNGZkMi1iNjQ2LWY2N2ZhODFkYjljZCI6IHsKICAgICAgIm5hbWUiOiAiUmVjb3JkIFJvZ3VlIFByaXYgRXNjIGFuZCBhZGQgMSBwb2ludCIsCiAgICAgICJvbl9jb21wbGV0aW9uIjogImFjdGlvbi0tMGViZjYxYTAtMDc1NS00MTcwLThkMDEtOTEzOWZjYjZhOGQyIiwKICAgICAgInN0ZXBfZXh0ZW5zaW9ucyI6IHsKICAgICAgICAiZXh0ZW5zaW9uLWRlZmluaXRpb24tLTQxOGVlMjRjLTljYjEtNDZkOS1hZmE1LTMwOWUwMWFhYmM3ZiI6IHsKICAgICAgICAgICJ0eXBlIjogImNvb3JkaW5hdGVzIiwKICAgICAgICAgICJ4IjogODI1LAogICAgICAgICAgInkiOiAyNDAsCiAgICAgICAgICAid2lkdGgiOiAxNTAsCiAgICAgICAgICAiaGVpZ2h0IjogNjAsCiAgICAgICAgICAib3V0Z29pbmdfY29ubmVjdGlvbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidHlwZSI6ICJvbi1jb21wbGV0aW9uIiwKICAgICAgICAgICAgICAieCI6IFsKICAgICAgICAgICAgICAgIDk3NSwKICAgICAgICAgICAgICAgIDEwNjUKICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICJ5IjogWwogICAgICAgICAgICAgICAgMjcwLAogICAgICAgICAgICAgICAgMjcwCiAgICAgICAgICAgICAgXQogICAgICAgICAgICB9CiAgICAgICAgICBdCiAgICAgICAgfQogICAgICB9LAogICAgICAidHlwZSI6ICJhY3Rpb24iCiAgICB9LAogICAgImFjdGlvbi0tMGViZjYxYTAtMDc1NS00MTcwLThkMDEtOTEzOWZjYjZhOGQyIjogewogICAgICAibmFtZSI6ICJDb21wYXJlIHRvIE5ldHdvcmsgVHJhZmZpYyBBbGVydCIsCiAgICAgICJvbl9jb21wbGV0aW9uIjogImlmLWNvbmRpdGlvbi0tZDE3Y2VkMWMtNWUxMi00NGYyLTg5MGMtMGJlMmY2ZGFmYmVkIiwKICAgICAgInN0ZXBfZXh0ZW5zaW9ucyI6IHsKICAgICAgICAiZXh0ZW5zaW9uLWRlZmluaXRpb24tLTQxOGVlMjRjLTljYjEtNDZkOS1hZmE1LTMwOWUwMWFhYmM3ZiI6IHsKICAgICAgICAgICJ0eXBlIjogImNvb3JkaW5hdGVzIiwKICAgICAgICAgICJ4IjogMTA2NSwKICAgICAgICAgICJ5IjogMjQwLAogICAgICAgICAgIndpZHRoIjogMTUwLAogICAgICAgICAgImhlaWdodCI6IDYwLAogICAgICAgICAgIm91dGdvaW5nX2Nvbm5lY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAib24tY29tcGxldGlvbiIsCiAgICAgICAgICAgICAgIngiOiBbCiAgICAgICAgICAgICAgICAxMTQwLAogICAgICAgICAgICAgICAgMTE0MAogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgInkiOiBbCiAgICAgICAgICAgICAgICAzMDAsCiAgICAgICAgICAgICAgICAzNjAKICAgICAgICAgICAgICBdCiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICB9CiAgICAgIH0sCiAgICAgICJ0eXBlIjogImFjdGlvbiIKICAgIH0sCiAgICAiaWYtY29uZGl0aW9uLS1kMTdjZWQxYy01ZTEyLTQ0ZjItODkwYy0wYmUyZjZkYWZiZWQiOiB7CiAgICAgICJuYW1lIjogIldhcyBob3N0IHdpdGggUHJpdiBFc2MgYWxzbyBnZW5lcmF0aW5nIG1vcmUgdHJhZmZpYz8iLAogICAgICAic3RlcF9leHRlbnNpb25zIjogewogICAgICAgICJleHRlbnNpb24tZGVmaW5pdGlvbi0tNDE4ZWUyNGMtOWNiMS00NmQ5LWFmYTUtMzA5ZTAxYWFiYzdmIjogewogICAgICAgICAgInR5cGUiOiAiY29vcmRpbmF0ZXMiLAogICAgICAgICAgIngiOiAxMDgwLAogICAgICAgICAgInkiOiAzNjAsCiAgICAgICAgICAid2lkdGgiOiAxMjAsCiAgICAgICAgICAiaGVpZ2h0IjogNjAsCiAgICAgICAgICAib3V0Z29pbmdfY29ubmVjdGlvbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidHlwZSI6ICJvbi10cnVlIiwKICAgICAgICAgICAgICAieCI6IFsKICAgICAgICAgICAgICAgIDEyMDAsCiAgICAgICAgICAgICAgICAxMjc1CiAgICAgICAgICAgICAgXSwKICAgICAgICAgICAgICAieSI6IFsKICAgICAgICAgICAgICAgIDM5MCwKICAgICAgICAgICAgICAgIDM5MAogICAgICAgICAgICAgIF0KICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0KICAgICAgfSwKICAgICAgInR5cGUiOiAiaWYtY29uZGl0aW9uIiwKICAgICAgIm9uX3RydWUiOiAiYWN0aW9uLS03YWU5NmJjNy0zY2IyLTQ4NzAtOTRmNC03YTdmMDM3NjY3MzkiCiAgICB9LAogICAgImFjdGlvbi0tN2FlOTZiYzctM2NiMi00ODcwLTk0ZjQtN2E3ZjAzNzY2NzM5IjogewogICAgICAibmFtZSI6ICJSZWNvcmQgUHJpdkVzYyBhbmQgTmV0d29yayBUcmFmZmljIChBZGQgMSBQb2ludCkiLAogICAgICAib25fY29tcGxldGlvbiI6ICJhY3Rpb24tLTdjYmMyMzljLWVlNDItNDVkYy04NzEyLWMwZjA1NDA4ZTlhOCIsCiAgICAgICJzdGVwX2V4dGVuc2lvbnMiOiB7CiAgICAgICAgImV4dGVuc2lvbi1kZWZpbml0aW9uLS00MThlZTI0Yy05Y2IxLTQ2ZDktYWZhNS0zMDllMDFhYWJjN2YiOiB7CiAgICAgICAgICAidHlwZSI6ICJjb29yZGluYXRlcyIsCiAgICAgICAgICAieCI6IDEyNzUsCiAgICAgICAgICAieSI6IDM2MCwKICAgICAgICAgICJ3aWR0aCI6IDE1MCwKICAgICAgICAgICJoZWlnaHQiOiA2MCwKICAgICAgICAgICJvdXRnb2luZ19jb25uZWN0aW9ucyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0eXBlIjogIm9uLWNvbXBsZXRpb24iLAogICAgICAgICAgICAgICJ4IjogWwogICAgICAgICAgICAgICAgMTQyNSwKICAgICAgICAgICAgICAgIDE1MzAKICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICJ5IjogWwogICAgICAgICAgICAgICAgMzkwLAogICAgICAgICAgICAgICAgMzkwCiAgICAgICAgICAgICAgXQogICAgICAgICAgICB9CiAgICAgICAgICBdCiAgICAgICAgfQogICAgICB9LAogICAgICAidHlwZSI6ICJhY3Rpb24iCiAgICB9LAogICAgImlmLWNvbmRpdGlvbi0tNTBkYTJkMjItOWI4Yy00ZjVlLWEzZjMtNTU3NjU1ZWE3N2Y1IjogewogICAgICAibmFtZSI6ICJXYXMgYWJub3JtYWwgdHJhZmZpYyBsZWF2aW5nIHBlcmltZXRlcj8iLAogICAgICAic3RlcF9leHRlbnNpb25zIjogewogICAgICAgICJleHRlbnNpb24tZGVmaW5pdGlvbi0tNDE4ZWUyNGMtOWNiMS00NmQ5LWFmYTUtMzA5ZTAxYWFiYzdmIjogewogICAgICAgICAgInR5cGUiOiAiY29vcmRpbmF0ZXMiLAogICAgICAgICAgIngiOiA2NTAsCiAgICAgICAgICAieSI6IDQ3MCwKICAgICAgICAgICJ3aWR0aCI6IDEyMCwKICAgICAgICAgICJoZWlnaHQiOiA2MCwKICAgICAgICAgICJvdXRnb2luZ19jb25uZWN0aW9ucyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0eXBlIjogIm9uLXRydWUiLAogICAgICAgICAgICAgICJ4IjogWwogICAgICAgICAgICAgICAgNzcwLAogICAgICAgICAgICAgICAgODI1CiAgICAgICAgICAgICAgXSwKICAgICAgICAgICAgICAieSI6IFsKICAgICAgICAgICAgICAgIDUwMCwKICAgICAgICAgICAgICAgIDUwMAogICAgICAgICAgICAgIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0eXBlIjogIm9uLWZhbHNlIiwKICAgICAgICAgICAgICAieCI6IFsKICAgICAgICAgICAgICAgIDcxMCwKICAgICAgICAgICAgICAgIDcxMCwKICAgICAgICAgICAgICAgIDE2MDUsCiAgICAgICAgICAgICAgICAxNjA1CiAgICAgICAgICAgICAgXSwKICAgICAgICAgICAgICAieSI6IFsKICAgICAgICAgICAgICAgIDUzMCwKICAgICAgICAgICAgICAgIDU5MCwKICAgICAgICAgICAgICAgIDU5MCwKICAgICAgICAgICAgICAgIDQyMAogICAgICAgICAgICAgIF0KICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0KICAgICAgfSwKICAgICAgInR5cGUiOiAiaWYtY29uZGl0aW9uIiwKICAgICAgIm9uX3RydWUiOiAiYWN0aW9uLS0zNDc5Y2Y2Mi0zNjIzLTQ5MTUtOWQ0NC02Zjc2MDAyNDE4NzkiLAogICAgICAib25fZmFsc2UiOiAiYWN0aW9uLS03Y2JjMjM5Yy1lZTQyLTQ1ZGMtODcxMi1jMGYwNTQwOGU5YTgiCiAgICB9LAogICAgImFjdGlvbi0tMzQ3OWNmNjItMzYyMy00OTE1LTlkNDQtNmY3NjAwMjQxODc5IjogewogICAgICAibmFtZSI6ICJSZWNvcmQgUG9zc2libGUgRXhpZmlsIChBZGQgMSBwb2ludCkiLAogICAgICAib25fY29tcGxldGlvbiI6ICJhY3Rpb24tLTNhYmEzMmQ5LTBlY2UtNDBkYi05M2Q3LWViMDM1MTg2MjVjMiIsCiAgICAgICJzdGVwX2V4dGVuc2lvbnMiOiB7CiAgICAgICAgImV4dGVuc2lvbi1kZWZpbml0aW9uLS00MThlZTI0Yy05Y2IxLTQ2ZDktYWZhNS0zMDllMDFhYWJjN2YiOiB7CiAgICAgICAgICAidHlwZSI6ICJjb29yZGluYXRlcyIsCiAgICAgICAgICAieCI6IDgyNSwKICAgICAgICAgICJ5IjogNDcwLAogICAgICAgICAgIndpZHRoIjogMTUwLAogICAgICAgICAgImhlaWdodCI6IDYwLAogICAgICAgICAgIm91dGdvaW5nX2Nvbm5lY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAib24tY29tcGxldGlvbiIsCiAgICAgICAgICAgICAgIngiOiBbCiAgICAgICAgICAgICAgICA5NzUsCiAgICAgICAgICAgICAgICAxMDY1CiAgICAgICAgICAgICAgXSwKICAgICAgICAgICAgICAieSI6IFsKICAgICAgICAgICAgICAgIDUwMCwKICAgICAgICAgICAgICAgIDUwMAogICAgICAgICAgICAgIF0KICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0KICAgICAgfSwKICAgICAgInR5cGUiOiAiYWN0aW9uIgogICAgfSwKICAgICJhY3Rpb24tLTNhYmEzMmQ5LTBlY2UtNDBkYi05M2Q3LWViMDM1MTg2MjVjMiI6IHsKICAgICAgIm5hbWUiOiAiQ29tcGFyZSB0byBQcml2IEVzYyBBbGVydCIsCiAgICAgICJvbl9jb21wbGV0aW9uIjogImlmLWNvbmRpdGlvbi0tZDE3Y2VkMWMtNWUxMi00NGYyLTg5MGMtMGJlMmY2ZGFmYmVkIiwKICAgICAgInN0ZXBfZXh0ZW5zaW9ucyI6IHsKICAgICAgICAiZXh0ZW5zaW9uLWRlZmluaXRpb24tLTQxOGVlMjRjLTljYjEtNDZkOS1hZmE1LTMwOWUwMWFhYmM3ZiI6IHsKICAgICAgICAgICJ0eXBlIjogImNvb3JkaW5hdGVzIiwKICAgICAgICAgICJ4IjogMTA2NSwKICAgICAgICAgICJ5IjogNDcwLAogICAgICAgICAgIndpZHRoIjogMTUwLAogICAgICAgICAgImhlaWdodCI6IDYwLAogICAgICAgICAgIm91dGdvaW5nX2Nvbm5lY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAib24tY29tcGxldGlvbiIsCiAgICAgICAgICAgICAgIngiOiBbCiAgICAgICAgICAgICAgICAxMTQwLAogICAgICAgICAgICAgICAgMTE0MAogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgInkiOiBbCiAgICAgICAgICAgICAgICA0NzAsCiAgICAgICAgICAgICAgICA0MjAKICAgICAgICAgICAgICBdCiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICB9CiAgICAgIH0sCiAgICAgICJ0eXBlIjogImFjdGlvbiIKICAgIH0sCiAgICAiYWN0aW9uLS03Y2JjMjM5Yy1lZTQyLTQ1ZGMtODcxMi1jMGYwNTQwOGU5YTgiOiB7CiAgICAgICJuYW1lIjogIlRhbGx5IFBvaW50cyIsCiAgICAgICJvbl9jb21wbGV0aW9uIjogImlmLWNvbmRpdGlvbi0tYjU5YTkwYjYtZTVjZS00NzllLTg4MzQtZjk2N2MxMDIzYjZmIiwKICAgICAgInN0ZXBfZXh0ZW5zaW9ucyI6IHsKICAgICAgICAiZXh0ZW5zaW9uLWRlZmluaXRpb24tLTQxOGVlMjRjLTljYjEtNDZkOS1hZmE1LTMwOWUwMWFhYmM3ZiI6IHsKICAgICAgICAgICJ0eXBlIjogImNvb3JkaW5hdGVzIiwKICAgICAgICAgICJ4IjogMTUzMCwKICAgICAgICAgICJ5IjogMzYwLAogICAgICAgICAgIndpZHRoIjogMTUwLAogICAgICAgICAgImhlaWdodCI6IDYwLAogICAgICAgICAgIm91dGdvaW5nX2Nvbm5lY3Rpb25zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAib24tY29tcGxldGlvbiIsCiAgICAgICAgICAgICAgIngiOiBbCiAgICAgICAgICAgICAgICAxNjgwLAogICAgICAgICAgICAgICAgMTc3MAogICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgInkiOiBbCiAgICAgICAgICAgICAgICAzOTAsCiAgICAgICAgICAgICAgICAzOTAKICAgICAgICAgICAgICBdCiAgICAgICAgICAgIH0KICAgICAgICAgIF0KICAgICAgICB9CiAgICAgIH0sCiAgICAgICJ0eXBlIjogImFjdGlvbiIKICAgIH0sCiAgICAiaWYtY29uZGl0aW9uLS1iNTlhOTBiNi1lNWNlLTQ3OWUtODgzNC1mOTY3YzEwMjNiNmYiOiB7CiAgICAgICJuYW1lIjogIklzIFBvaW50IFZhbHVlID4gMiIsCiAgICAgICJzdGVwX2V4dGVuc2lvbnMiOiB7CiAgICAgICAgImV4dGVuc2lvbi1kZWZpbml0aW9uLS00MThlZTI0Yy05Y2IxLTQ2ZDktYWZhNS0zMDllMDFhYWJjN2YiOiB7CiAgICAgICAgICAidHlwZSI6ICJjb29yZGluYXRlcyIsCiAgICAgICAgICAieCI6IDE3NzAsCiAgICAgICAgICAieSI6IDM2MCwKICAgICAgICAgICJ3aWR0aCI6IDEyMCwKICAgICAgICAgICJoZWlnaHQiOiA2MCwKICAgICAgICAgICJvdXRnb2luZ19jb25uZWN0aW9ucyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0eXBlIjogIm9uLXRydWUiLAogICAgICAgICAgICAgICJ4IjogWwogICAgICAgICAgICAgICAgMTgzMCwKICAgICAgICAgICAgICAgIDE4MzAKICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICJ5IjogWwogICAgICAgICAgICAgICAgMzYwLAogICAgICAgICAgICAgICAgMzEwCiAgICAgICAgICAgICAgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInR5cGUiOiAib24tZmFsc2UiLAogICAgICAgICAgICAgICJ4IjogWwogICAgICAgICAgICAgICAgMTgzMCwKICAgICAgICAgICAgICAgIDE4MzAKICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICJ5IjogWwogICAgICAgICAgICAgICAgNDIwLAogICAgICAgICAgICAgICAgNDgwCiAgICAgICAgICAgICAgXQogICAgICAgICAgICB9CiAgICAgICAgICBdCiAgICAgICAgfQogICAgICB9LAogICAgICAidHlwZSI6ICJpZi1jb25kaXRpb24iLAogICAgICAib25fdHJ1ZSI6ICJhY3Rpb24tLTcyMzFlNmRjLTQ1ZjMtNGQ2Yi05YTlhLTc0YWMzOTA4YmQ5YiIsCiAgICAgICJvbl9mYWxzZSI6ICJlbmQtLWIyZmNmOWI3LWJiMzQtNGIyOC1iNzQ5LTA1ODNmNTExYjMzYyIKICAgIH0sCiAgICAiYWN0aW9uLS03MjMxZTZkYy00NWYzLTRkNmItOWE5YS03NGFjMzkwOGJkOWIiOiB7CiAgICAgICJuYW1lIjogIkNvbnRhY3QgT3BlcmF0b3IiLAogICAgICAib25fY29tcGxldGlvbiI6ICJlbmQtLTEzYmZjN2Q4LTYxY2UtNDE3OC1iZjQ4LWQwOGY1ZTBmMDIzZiIsCiAgICAgICJzdGVwX2V4dGVuc2lvbnMiOiB7CiAgICAgICAgImV4dGVuc2lvbi1kZWZpbml0aW9uLS00MThlZTI0Yy05Y2IxLTQ2ZDktYWZhNS0zMDllMDFhYWJjN2YiOiB7CiAgICAgICAgICAidHlwZSI6ICJjb29yZGluYXRlcyIsCiAgICAgICAgICAieCI6IDE3NTUsCiAgICAgICAgICAieSI6IDI1MCwKICAgICAgICAgICJ3aWR0aCI6IDE1MCwKICAgICAgICAgICJoZWlnaHQiOiA2MCwKICAgICAgICAgICJvdXRnb2luZ19jb25uZWN0aW9ucyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0eXBlIjogIm9uLWNvbXBsZXRpb24iLAogICAgICAgICAgICAgICJ4IjogWwogICAgICAgICAgICAgICAgMTkwNSwKICAgICAgICAgICAgICAgIDIwMDAKICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICJ5IjogWwogICAgICAgICAgICAgICAgMjgwLAogICAgICAgICAgICAgICAgMjgwCiAgICAgICAgICAgICAgXQogICAgICAgICAgICB9CiAgICAgICAgICBdCiAgICAgICAgfQogICAgICB9LAogICAgICAidHlwZSI6ICJhY3Rpb24iCiAgICB9LAogICAgImVuZC0tMTNiZmM3ZDgtNjFjZS00MTc4LWJmNDgtZDA4ZjVlMGYwMjNmIjogewogICAgICAic3RlcF9leHRlbnNpb25zIjogewogICAgICAgICJleHRlbnNpb24tZGVmaW5pdGlvbi0tNDE4ZWUyNGMtOWNiMS00NmQ5LWFmYTUtMzA5ZTAxYWFiYzdmIjogewogICAgICAgICAgInR5cGUiOiAiY29vcmRpbmF0ZXMiLAogICAgICAgICAgIngiOiAyMDAwLAogICAgICAgICAgInkiOiAyNjAsCiAgICAgICAgICAid2lkdGgiOiA2MCwKICAgICAgICAgICJoZWlnaHQiOiA0MAogICAgICAgIH0KICAgICAgfSwKICAgICAgInR5cGUiOiAiZW5kIgogICAgfSwKICAgICJlbmQtLWIyZmNmOWI3LWJiMzQtNGIyOC1iNzQ5LTA1ODNmNTExYjMzYyI6IHsKICAgICAgInN0ZXBfZXh0ZW5zaW9ucyI6IHsKICAgICAgICAiZXh0ZW5zaW9uLWRlZmluaXRpb24tLTQxOGVlMjRjLTljYjEtNDZkOS1hZmE1LTMwOWUwMWFhYmM3ZiI6IHsKICAgICAgICAgICJ0eXBlIjogImNvb3JkaW5hdGVzIiwKICAgICAgICAgICJ4IjogMTgwMCwKICAgICAgICAgICJ5IjogNDgwLAogICAgICAgICAgIndpZHRoIjogNjAsCiAgICAgICAgICAiaGVpZ2h0IjogNDAKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJ0eXBlIjogImVuZCIKICAgIH0KICB9LAogICJleHRlbnNpb25fZGVmaW5pdGlvbnMiOiB7CiAgICAiZXh0ZW5zaW9uLWRlZmluaXRpb24tLTQxOGVlMjRjLTljYjEtNDZkOS1hZmE1LTMwOWUwMWFhYmM3ZiI6IHsKICAgICAgInR5cGUiOiAiZXh0ZW5zaW9uLWRlZmluaXRpb24iLAogICAgICAibmFtZSI6ICJjb29yZGluYXRlcyBleHRlbnNpb24iLAogICAgICAiZGVzY3JpcHRpb24iOiAiQ29vcmRpbmF0ZXMgZXh0ZW5zaW9uIGZvciBDQUNBTyBjb25zdHJ1Y3RzIGZvciB2aXN1YWxpemF0aW9uIHB1cnBvc2VzLiIsCiAgICAgICJjcmVhdGVkX2J5IjogImlkZW50aXR5LS01YWJlNjk1Yy03YmQ1LTRjMzEtODgyNC0yNTI4Njk2Y2RiZjEiLAogICAgICAic2NoZW1hIjogImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9jeWVudGlmaWMtcm5pL2NhY2FvLWNvb3JkaW5hdGVzLWV4dGVuc2lvbi9tYWluL3NjaGVtYXMvY29vcmRpbmF0ZXMuanNvbiIsCiAgICAgICJ2ZXJzaW9uIjogIjEuMC4wIgogICAgfQogIH0KfQ==",
+      "extensions": {
+        "extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9": {
+          "extension_type": "new-sdo"
+        }
+      }
+    },
+    {
+      "source_ref": "course-of-action--bf0ef2e4-185d-4d33-9359-bc41adddd518",
+      "target_ref": "x-oca-playbook--67352a79-99a7-4dfe-a610-1a248f9182ce",
+      "relationship_type": "uses",
+      "type": "relationship",
+      "spec_version": "2.1",
+      "created": "2024-09-04T11:00:30.766Z",
+      "modified": "2024-09-04T11:00:30.766Z",
+      "id": "relationship--de075bb3-808b-49bf-a4c5-c5926ff4a7ed"
+    },
+    {
+      "id": "grouping--065702e9-8270-4fda-bd45-c2ce5a63011a",
+      "type": "grouping",
+      "spec_version": "2.1",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2024-09-04T10:53:27.336Z",
+      "modified": "2024-09-04T10:53:27.336Z",
+      "revoked": false,
+      "lang": "en",
+      "name": "Network Behavior Detection Bundle",
+      "context": "suspicious-activity",
+      "object_refs": [
+        "x-oca-playbook--67352a79-99a7-4dfe-a610-1a248f9182ce",
+        "course-of-action--bf0ef2e4-185d-4d33-9359-bc41adddd518",
+        "x-oca-detection--f27cb358-d747-47ba-a6c4-e5b8debab157",
+        "x-oca-detection--c773d764-4451-463f-97c7-ed01bcb3a2b9",
+        "x-oca-behavior--b097fbbf-4f97-4f95-9a6f-02e2de7839c7",
+        "x-oca-behavior--edc99806-f8e9-4ee3-b2d4-1234567890dd",
+        "attack-pattern--86850eff-2729-40c3-b85e-c4af26da4a2d",
+        "attack-pattern--92d7da27-2d91-488e-a00c-059dc162766d",
+        "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+        "x-oca-detector--79871c80-7cad-4e7c-8f59-84e2c5c2f125",
+        "identity--b085a68a-bf48-4316-9667-37af78cba894",
+        "x-oca-detector--f9ccdd3d-2217-45fd-8e65-055da8e66c3e"
+      ]
+    },
+    {
+      "type": "extension-definition",
+      "spec_version": "2.1",
+      "id": "extension-definition--bbc1d5c8-7ddc-4e89-be9c-f33ad02d71dd",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2022-03-31T13:00:00.000Z",
+      "modified": "2024-05-16T12:44:08.273Z",
+      "name": "x-oca-coa-playbook-ext Extension Definition",
+      "description": "This definition extends the COA SDO with playbook references.",
+      "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-coa-playbook-ext.json",
+      "version": "4.0.0",
+      "extension_types": [
+        "property-extension"
+      ]
+    },
+    {
+      "type": "extension-definition",
+      "spec_version": "2.1",
+      "id": "extension-definition--809c4d84-7a6e-4039-97b4-da9fea03fcf9",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2022-03-31T13:00:00.000Z",
+      "modified": "2024-05-16T12:44:08.273Z",
+      "name": "x-oca-playbook Extension Definition",
+      "description": "This definition introduces a new object type, x-oca-playbook, for sharing security playbooks.",
+      "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-playbook.json",
+      "version": "4.0.0",
+      "extension_types": [
+        "new-sdo"
+      ]
+    },
+    {
+      "type": "extension-definition",
+      "spec_version": "2.1",
+      "id": "extension-definition--9c59fd79-4215-4ba2-920d-3e4f320e1e62",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2022-03-31T13:00:00.000Z",
+      "modified": "2022-03-31T13:00:00.000Z",
+      "name": "x-oca-behavior Extension Definition",
+      "description": "This schema creates a new object type called x-oca-behavior. x-oca-behavior objects describe higher-level functionality than can be described using SCOs.",
+      "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-behavior.json",
+      "version": "1.0.0",
+      "extension_types": [
+        "new-sdo"
+      ]
+    },
+    {
+      "type": "extension-definition",
+      "spec_version": "2.1",
+      "id": "extension-definition--5cccba5c-0be4-450c-8672-b66e98515754",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2023-05-01T12:00:00.000Z",
+      "modified": "2023-05-01T12:00:00.000Z",
+      "name": "x-oca-detector Extension Definition",
+      "description": "This schema creates a new object type called detector, which describes software that is capable of performing detections.",
+      "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-detector.json",
+      "version": "1.0.0",
+      "extension_types": [
+        "new-sdo"
+      ]
+    },
+    {
+      "type": "extension-definition",
+      "spec_version": "2.1",
+      "id": "extension-definition--c4690e13-107e-4796-8158-0dcf1ae7bc89",
+      "created_by_ref": "identity--b085a68a-bf48-4316-9667-37af78cba894",
+      "created": "2022-03-31T13:00:00.000Z",
+      "modified": "2022-03-31T13:00:00.000Z",
+      "name": "x-oca-detection Extension Definition",
+      "description": "This schema creates a new object type called detection, which contain queries or other actionable information that can identify an event or behavior.",
+      "schema": "https://raw.githubusercontent.com/opencybersecurityalliance/stix-extensions/main/2.x/schemas/x-oca-detection.json",
+      "version": "1.0.0",
+      "extension_types": [
+        "new-sdo"
+      ]
+    }
+  ]
+}
