@@ -1,0 +1,21 @@
+title: Copying NTDS Database
+id: 400a56d8-97b1-4b92-b1f5-95fa548b217d
+status: experimental
+description: Attackers utilize existing tools (living off the land) to create a copy of the NTDS.dit database.
+references: https://attack.mitre.org/techniques/T1555/
+author: OCA
+date: 2025/04/14
+modified: 2025/04/14
+tags:
+    - attack.t1555
+    - attack.credential_access
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        event.code: 325
+    condition: selection
+falsepositives:
+    - legitimate token
+level: high

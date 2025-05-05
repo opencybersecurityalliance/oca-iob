@@ -1,0 +1,25 @@
+title: Command and Scripting Interpreter - PowerShell Powersploit
+id: 6e7606b9-2dcb-4a25-ae3d-0fdd50017f6e
+status: experimental
+description: Powersploit usage to enumerate network
+references: https://attack.mitre.org/techniques/T1059/001/
+author: OCA
+date: 2025/04/14
+modified: 2025/04/14
+tags:
+    - attack.t1059.001
+    - attack.execution
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_1:
+        event.code: 4104
+    selection_2:
+        winlog.event_data.ScriptBlockText: '*Get-DomainComputer*'
+    selection_3:
+        winlog.event_data.ScriptBlockText: '*Get-NetComputer*'
+    condition: selection_1 and selection_2 and selection_3
+falsepositives:
+    - Legitimate powershell scripts
+level: high
