@@ -1,0 +1,31 @@
+title: Computer executes file from abnormal location
+id: 51e0b49e-99f1-4181-96a9-d91babe582cd
+status: experimental
+description: Attackers utilize malware that is downloaded and executed from attachments or downloads, it is executing code from abnormal locations.
+references: 'https://attack.mitre.org/techniques/T1608/001/'
+author: OCA
+date: 2025/04/14
+modified: 2025/04/14
+tags:
+  - attack.t1608.001
+  - attack.resource-development
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_1:
+    - event.code: 1
+  selection_2:
+    - winlog.event_data.Image: '*'
+  selection_3:
+    - winlog.event_data.Image: '\\Windows\*'
+  selection_4:
+    - winlog.event_data.Image: '\\Program Files\*'
+  selection_5:
+    - winlog.event_data.Image: '\\ProgramData\*'
+  selection_6:
+    - winlog.event_data.Image: '\\AppData\*'
+  condition: selection_1 and selection_2 and not selection_3 and not selection_4 and not selection_5 and not selection_6
+falsepositives:
+  - Legitimate files
+level: high
