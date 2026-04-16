@@ -72,7 +72,7 @@ class NeoUploader(object):
             else:
                 node_name = apobj["name"]
             # add id and type to node contents
-            node_contents["ap_id"] = apobj["id"]
+            node_contents["stix_id"] = apobj["id"]
             node_contents["type"] = apobj["type"]
             # store rest of object contents in node contents
             for key in keys:
@@ -113,7 +113,7 @@ class NeoUploader(object):
                         ref_list = apobj[k]
                     for ref in ref_list:
                     	# The "b to a" relationship is reversed in this cypher query to ensure the correct relationship direction in the graph 
-                        cypher_string = f'MATCH (a),(b) WHERE a.bundlesource="{self.bundlename}" AND b.bundlesource="{self.bundlename}" AND a.ap_id="{str(ref)}" AND b.ap_id="{str(apobj["id"])}" CREATE (b)-[r:{rel_type}]->(a) RETURN a,b'
+                        cypher_string = f'MATCH (a),(b) WHERE a.bundlesource="{self.bundlename}" AND b.bundlesource="{self.bundlename}" AND a.stix_id="{str(ref)}" AND b.stix_id="{str(apobj["id"])}" CREATE (b)-[r:{rel_type}]->(a) RETURN a,b'
                         try:
                             self.sgraph.run(cypher_string)
                         except Exception as err:
@@ -130,7 +130,7 @@ class NeoUploader(object):
             # the hyphen is interpreted as an operation in the query string
             reltype = reltype.replace('-', '_')
             # create the relationship
-            cypher_string = f'MATCH (a),(b) WHERE a.bundlesource="{self.bundlename}" AND b.bundlesource="{self.bundlename}" AND a.ap_id="{str(apobj["source_ref"])}" AND b.ap_id="{str(apobj["target_ref"])}" CREATE (a)-[r:{reltype}]->(b) RETURN a,b'
+            cypher_string = f'MATCH (a),(b) WHERE a.bundlesource="{self.bundlename}" AND b.bundlesource="{self.bundlename}" AND a.stix_id="{str(apobj["source_ref"])}" AND b.stix_id="{str(apobj["target_ref"])}" CREATE (a)-[r:{reltype}]->(b) RETURN a,b'
             self.sgraph.run(cypher_string)
             # maintain set of object ids that are in relationship objects
             self.relationship_ids.add(str(apobj['source_ref']))
