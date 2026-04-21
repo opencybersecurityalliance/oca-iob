@@ -7,6 +7,10 @@ An overview of the Sub-Project is available [here](https://github.com/opencybers
 
 The IOB WG charter is available [here](https://github.com/opencybersecurityalliance/oca-iob/blob/main/charter.md).
 
+Documentation for STIX 2.1 complaint IOB objects is available [here](https://github.com/opencybersecurityalliance/stix-extensions/tree/main/2.x).
+
+A fork of the STIX Modeler that supports the creation and visualization of STIX IOB objects is available [here](https://github.com/JHUAPL/STIXMODELER_UI).
+
 ## Join US
 You can join the IOB sub-project by sending a blank email message to our [Mailing List](mailto:oca-iob-wg+subscribe@lists.oasis-open-projects.org) or joining our [slack channel](https://join.slack.com/t/open-cybersecurity/shared_invite/zt-19pliofsm-L7eSSB8yzABM2Pls1nS12w).
 
